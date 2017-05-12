@@ -1,4 +1,11 @@
-sass:
-  load_paths:
-    - _sass
-    - bower_components/foundation-sites/scss
+exclude:
+  - bower_components
+  - node_modules
+  - scss
+  - bower.json
+  - Gemfile
+  - Gemfile.lock
+  - gulpfile.js
+  - package.json
+keep_files:
+  - assets

@@ -4,8 +4,8 @@
     "Darwin Campa <darwin.campa@ticketmaster.com>"
   ],
   "description": "Ticketmaster Innovations website",
-  "main": "",
-  "license": "MIT",
+  "main": "index.html",
+  "license": "UNLICENSED",
   "homepage": "",
   "private": true,
   "ignore": [
