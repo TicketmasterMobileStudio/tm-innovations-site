@@ -1,0 +1,21 @@
+{
+  "name": "tm-innovations-site",
+  "authors": [
+    "Darwin Campa <darwin.campa@ticketmaster.com>"
+  ],
+  "description": "Ticketmaster Innovations website",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation-sites": "^6.3.1"
+  }
+}
