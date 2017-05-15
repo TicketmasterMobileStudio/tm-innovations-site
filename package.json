@@ -9,8 +9,8 @@
     "gulp-sass": "^3.1.0"
   },
   "scripts": {
-    "start": "gulp",
-    "build": "gulp sass"
+    "start": "gulp watch",
+    "build": "gulp"
   },
   "author": "Darwin Campa <darwin.campa@ticketmaster.com>",
   "license": "UNLICENSED",

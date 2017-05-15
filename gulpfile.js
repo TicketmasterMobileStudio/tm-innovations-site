@@ -26,4 +26,8 @@ gulp.task('js', () =>
     .pipe(gulp.dest('_site/assets/js'))
 );
 
+gulp.task('watch', ['sass'], () => {
+  gulp.watch(['scss/**/*.scss'], ['sass']);
+});
+
 gulp.task('default', ['sass', 'js']);
