@@ -1,0 +1,22 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url }}" />
+  </head>
+  <body>
+    {% include header.html %}
+    <h1>Hello, world!</h1>
+
+    {% include footer.html %}
+    <script src="{{ 'assets/js/jquery.min.js' | relative_url }}"></script>
+    <script src="{{ 'assets/js/what-input.min.js' | relative_url }}"></script>
+    <script src="{{ 'assets/js/foundation.min.js' | relative_url }}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
