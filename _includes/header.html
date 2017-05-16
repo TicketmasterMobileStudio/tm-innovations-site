@@ -1,22 +1,17 @@
-<header>
-  <div class="top-bar">
-    <div class="top-bar-title">
-      <a href="{{ '/' | relative_url }}">
-        <img src="{{ 'assets/images/tm-innovations-logo.svg' | relative_url }}" alt="tm/INNOVATIONS">
-      </a>
-    </div>
-    <div>
-      <div class="top-bar-right">
-        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-          <button class="menu-icon dark" type="button" data-toggle></button>
-        </span>
-        <ul id="responsive-menu" class="menu">
-          <li><a href="{{ '/' | relative_url }}">Products</a></li>
-          <li><a href="{{ 'early-access.html' | relative_url }}">Early Access</a></li>
-          <li><a href="http://insider.ticketmaster.com/tag/innovations" target="_blank">Insights</a></li>
-          <li><a href="http://www.ticketmaster.com" target="_blank">Ticketmaster</a></li>
-        </ul>
-      </div>
+<header class="top-bar">
+  <div class="top-bar-title">
+    <a href="{% link index.html %}">
+      <img src="{% link assets/images/tm-innovations-logo.svg %}" alt="tm/INNOVATIONS">
+    </a>
+  </div>
+  <div>
+    <div class="top-bar-right text-right">
+      <span class="hide-for-medium" data-toggle="main-menu menu-button" data-hide-for="medium">
+        <button id="menu-button" class="custom-menu-icon" type="button" data-toggler="open"></button>
+      </span>
+      <ul id="main-menu" class="menu show-for-medium" data-toggler="show-for-medium vertical">
+        {% include nav.html %}
+      </ul>
     </div>
   </div>
 </header>
