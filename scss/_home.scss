@@ -1,0 +1,23 @@
+html {
+  height: 100%;
+}
+
+.home {
+  height: 100%;
+
+  .hero {
+    background-image: linear-gradient($primary-color, #2a7cc7);
+    height: 100%;
+    padding-top: $topbar-height;
+    color: $white;
+    @include flex;
+
+    .columns {
+      @include flex;
+    }
+
+    h1 {
+      @include flex-align-self(middle);
+    }
+  }
+}
