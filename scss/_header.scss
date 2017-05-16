@@ -53,6 +53,18 @@ $headband-height: rem-calc(8);
   }
 
   .menu {
+    background: rgba($white, 0.95);
+    position: fixed;
+    top: $topbar-height + $headband-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include breakpoint(medium only) {
+      width: rem-calc(320);
+      left: auto;
+    }
+
     a {
       padding: 0 rem-calc(15);
       color: $medium-gray;
@@ -68,6 +80,7 @@ $headband-height: rem-calc(8);
     }
 
     &:not(.vertical) {
+      position: static;
       margin-right: rem-calc(-15);
 
       .current a {
