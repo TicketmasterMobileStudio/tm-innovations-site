@@ -3,5 +3,25 @@ layout: default
 ---
 
 <section class="hero text-center">
-  {{ content }}
+  <div class="content">
+    <div class="row">
+      <div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
+        {{ content }}
+      </div>
+    </div>
+  </div>
 </section>
+
+{% for product in site.products %}
+  <article class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
+    <div class="content">
+      <div class="row">
+        <div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
+          <h2>{{ product.title }}</h2>
+          {% include button.html url=product.url text='Learn More' %}
+          {% include button.html url=product.link text='Get It Now' classes='secondary' %}
+        </div>
+      </div>
+    </div>
+  </article>
+{% endfor %}
