@@ -7,16 +7,18 @@ html {
 
   .hero {
     background-image: linear-gradient($primary-color, #2a7cc7);
+  }
+
+  section, article {
+    background: no-repeat center;
+    background-size: cover;
     height: 100%;
-    padding-top: $topbar-height;
     color: $white;
+    padding-top: $topbar-height;
     @include flex;
 
-    .columns {
-      @include flex;
-    }
-
-    h1 {
+    .content {
+      width: 100%;
       @include flex-align-self(middle);
     }
   }

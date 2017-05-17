@@ -1,5 +1,18 @@
 title: Ticketmaster Innovations
 
+collections:
+  products:
+    output: true
+
+permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: products
+    values:
+      layout: product
+
 exclude:
   - bower_components
   - node_modules
@@ -9,5 +22,9 @@ exclude:
   - Gemfile.lock
   - gulpfile.js
   - package.json
+
 keep_files:
-  - assets
+  - assets/css/main.css
+  - assets/js/foundation.min.js
+  - assets/js/jquery.min.js
+  - assets/js/what-input.min.js
