@@ -1,6 +1,17 @@
 title: Ticketmaster Innovations
 
+collections:
+  products:
+    output: true
+
 permalink: pretty
+
+defaults:
+  - scope:
+      path: ""
+      type: products
+    values:
+      layout: product
 
 exclude:
   - bower_components

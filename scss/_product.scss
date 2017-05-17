@@ -1,0 +1,19 @@
+.product {
+  .background {
+    height: 100%;
+    width: 100%;
+    background: no-repeat center fixed;
+    background-size: cover;
+    padding-top: 100%;
+  }
+
+  .product-icon {
+    position: fixed;
+    top: $topbar-height + $headband-height + rem-calc(20);
+    right: rem-calc(20);
+  }
+
+  article {
+    background-color: $white;
+  }
+}
