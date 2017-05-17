@@ -1,15 +1,7 @@
-{% assign navLinks = '/, early-access.html' | split: ', ' %}
-{% assign navTitles = 'Products, Early Access' | split: ', ' %}
+{% capture home_url %}{% link index.html %}{% endcapture %}
+{% capture eap_url %}{% link early-access.html %}{% endcapture %}
 
-{% for item in navLinks %}
-  {% assign title = navTitles[forloop.index0] %}
-  {% assign link = item | relative_url %}
-  {% if link == page.url %}
-    <li class="current"><a href="{{ link }}">{{ title }}</a></li>
-  {% else %}
-    <li><a href="{{ link }}">{{ title }}</a></li>
-  {% endif %}
-{% endfor %}
-
+<li{% if home_url == page.url %} class="current"{% endif %}><a href="{{ home_url }}">Products</a></li>
+<li{% if eap_url == page.url %} class="current"{% endif %}><a href="{{ eap_url }}">Early Access</a></li>
 <li><a href="http://insider.ticketmaster.com/tag/innovations" target="_blank">Insights</a></li>
 <li><a href="http://www.ticketmaster.com" target="_blank">Ticketmaster</a></li>

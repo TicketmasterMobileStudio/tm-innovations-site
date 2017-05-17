@@ -1,5 +1,7 @@
 title: Ticketmaster Innovations
 
+permalink: pretty
+
 exclude:
   - bower_components
   - node_modules
@@ -9,5 +11,6 @@ exclude:
   - Gemfile.lock
   - gulpfile.js
   - package.json
+
 keep_files:
   - assets
