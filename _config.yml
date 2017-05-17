@@ -13,4 +13,7 @@ exclude:
   - package.json
 
 keep_files:
-  - assets
+  - assets/css/main.css
+  - assets/js/foundation.min.js
+  - assets/js/jquery.min.js
+  - assets/js/what-input.min.js
