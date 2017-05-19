@@ -1,10 +1,10 @@
-.product {
+body.product {
   .background {
     height: 100%;
     width: 100%;
     background: no-repeat center fixed;
     background-size: cover;
-    padding-top: 100%;
+    padding-top: 80vh;
   }
 
   .product-icon {
@@ -13,7 +13,14 @@
     right: rem-calc(20);
   }
 
-  article {
+  .content {
     background-color: $white;
+    @include breakpoint(medium up) { @include grid-column-collapse; }
+  }
+
+  article {
+    padding: rem-calc(36 10);
+    @include breakpoint(medium up) { padding: rem-calc(60) grid-column(2 of 12); }
+    @include breakpoint(large up) { padding: rem-calc(60) grid-column(2 of 10); }
   }
 }
