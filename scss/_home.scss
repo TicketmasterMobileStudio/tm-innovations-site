@@ -10,6 +10,13 @@
     height: calc(100vh - #{$topbar-height + $headband-height});
     color: $white;
     @include flex;
+    position: relative;
+
+    .product-icon {
+      position: absolute;
+      top: rem-calc(20);
+      right: rem-calc(20);
+    }
 
     .content {
       width: 100%;

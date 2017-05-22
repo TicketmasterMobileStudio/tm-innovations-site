@@ -14,6 +14,7 @@ layout: default
 
 {% for product in site.products %}
   <article class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
+    <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
     <div class="content">
       <div class="row">
         <div class="medium-10 medium-centered large-8 columns">
