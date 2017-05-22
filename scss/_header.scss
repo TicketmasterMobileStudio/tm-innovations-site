@@ -1,12 +1,20 @@
 $topbar-height: rem-calc(72);
 $headband-height: rem-calc(8);
 
-.top-bar {
-  position: fixed;
+div[data-sticky-container] {
+  position: relative;
   z-index: 1;
+}
+
+.top-bar {
   width: 100%;
   height: $topbar-height + $headband-height;
   padding-top: $headband-height;
+  transition: box-shadow 0.2s;
+
+  &.is-stuck {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  }
 
   // Gradient variables
   $i: 100% / 6; // increment
@@ -47,13 +55,16 @@ $headband-height: rem-calc(8);
     }
   }
 
-  .menu {
-    background: rgba($white, 0.95);
-    position: fixed;
-    top: $topbar-height + $headband-height;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  #main-menu {
+    @include breakpoint(medium down) {
+      background: rgba($white, 0.95);
+      position: absolute;
+      top: $topbar-height + $headband-height;
+      left: 0;
+      right: 0;
+      overflow: auto;
+      height: calc(100vh - #{$topbar-height + $headband-height});
+    }
 
     @include breakpoint(medium only) {
       width: rem-calc(320);
@@ -68,24 +79,50 @@ $headband-height: rem-calc(8);
       text-transform: uppercase;
       line-height: rem-calc(48);
       height: rem-calc(48);
+      transition: color 0.2s;
+
+      &:hover {
+        color: $dark-gray;
+      }
     }
 
-    .current a {
+    .active > a, .active > span > a {
       color: $primary-color;
+      background-color: inherit;
     }
 
-    &:not(.vertical) {
-      position: static;
+    @include breakpoint(large up) {
       margin-right: rem-calc(-15);
 
-      .current a {
+      .active a {
         color: $medium-gray;
-        border-bottom: 4px solid $primary-color;        
+      }
+
+      > .active > a {
+        border-bottom: 4px solid $primary-color;
       }
 
       a {
         line-height: $topbar-height;
         height: $topbar-height;
+      }
+
+      .submenu {
+        background: rgba($white, 0.95);
+        border: none;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+
+        li {
+          display: inline-block;
+          width: auto;
+        }
+
+        .active a {
+          // border-bottom: none;
+          // color: $primary-color;
+        }
       }
     }
   }
