@@ -1,0 +1,49 @@
+@include breakpoint(large up) {
+  body.product {
+    .footer-container {
+      @include grid-row;
+    }
+    footer {
+      @include grid-column(10, 0);
+      @include grid-column-position(center);
+    }
+  }
+}
+
+footer {
+  padding: rem-calc(36) 0;
+  color: $white;
+  background-color: $primary-color;
+
+  .footer-logo {
+    margin-bottom: rem-calc(16);
+  }
+
+  p {
+    margin-bottom: rem-calc(24);
+  }
+
+  .menu.social-icons li {
+    margin-right: rem-calc(20);
+
+    &:last-child { margin-right: 0; }
+
+    img { margin-right: 0; }
+  }
+
+  @include breakpoint(medium up) {
+    padding: rem-calc(60) 0;
+  }
+
+  @include breakpoint(large up) {
+    p, .social-icons {
+      display: inline-block;
+    }
+
+    .footer-logo, p {
+      margin-bottom: 0;
+      margin-right: rem-calc(30);
+    }
+  }
+
+}

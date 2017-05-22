@@ -12,7 +12,7 @@
 
     {{ content }}
 
-    {% include footer.html %}
+    {% unless page.layout == 'product' %}{% include footer.html %}{% endunless %}
     <script src="{{ 'assets/js/jquery.min.js' | relative_url }}"></script>
     <script src="{{ 'assets/js/what-input.min.js' | relative_url }}"></script>
     <script src="{{ 'assets/js/foundation.min.js' | relative_url }}"></script>
