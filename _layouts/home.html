@@ -20,7 +20,9 @@ layout: default
         <div class="medium-10 medium-centered large-8 columns">
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
-          {% include button.html url=product.link text='Get It Now' classes='secondary' %}
+          {% if (product.link) %}
+            {% include button.html url=product.link text='Get It Now' classes='secondary' %}
+          {% endif %}
         </div>
       </div>
     </div>
