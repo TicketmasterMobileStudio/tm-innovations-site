@@ -5,7 +5,7 @@ layout: default
 <section class="hero text-center">
   <div class="content">
     <div class="row">
-      <div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
+      <div class="medium-10 medium-centered large-8 columns">
         {{ content }}
       </div>
     </div>
@@ -14,9 +14,10 @@ layout: default
 
 {% for product in site.products %}
   <article class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
+    <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
     <div class="content">
       <div class="row">
-        <div class="medium-10 medium-offset-1 large-8 large-offset-2 columns">
+        <div class="medium-10 medium-centered large-8 columns">
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
           {% include button.html url=product.link text='Get It Now' classes='secondary' %}

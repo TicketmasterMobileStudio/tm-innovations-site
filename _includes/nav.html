@@ -1,7 +1,17 @@
 {% capture home_url %}{% link index.html %}{% endcapture %}
 {% capture eap_url %}{% link early-access.html %}{% endcapture %}
 
-<li{% if home_url == page.url %} class="current"{% endif %}><a href="{{ home_url }}">Products</a></li>
-<li{% if eap_url == page.url %} class="current"{% endif %}><a href="{{ eap_url }}">Early Access</a></li>
+<li{% if home_url == page.url %} class="active"{% endif %}>
+  <a href="{{ home_url }}">Products</a>
+  <ul class="vertical large-horizontal menu">
+    {% for product in site.products %}
+      <li{% if product.url == page.url %} class="active"{% endif %}>
+        <img class="product-nav-icon" src="{{ product.nav-icon | prepend: 'assets/images/' | relative_url }}" alt="">
+        <span><a href="{{ product.url }}">{{ product.title }}</a></span>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
+<li{% if eap_url == page.url %} class="active"{% endif %}><a href="{{ eap_url }}">Early Access</a></li>
 <li><a href="http://insider.ticketmaster.com/tag/innovations" target="_blank">Insights</a></li>
 <li><a href="http://www.ticketmaster.com" target="_blank">Ticketmaster</a></li>

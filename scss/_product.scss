@@ -1,10 +1,35 @@
-.product {
+$h1-size-small: map-deep-get($header-styles, 'small', 'h1', 'font-size') * 1px;
+
+// vertical spacing in content area
+$pdp-v-spacing: (
+  small: rem-calc(36),
+  medium: rem-calc(60)
+);
+
+// calculate padding in order to show title and 1 line of text
+@mixin pdp-v-offset($size) {
+  padding-top:
+    calc(
+      100vh -
+      #{
+        $topbar-height
+        + $headband-height
+        + map-get($pdp-v-spacing, $size)
+        + rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size') * $header-lineheight)
+        + $header-margin-bottom
+        + $paragraph-lineheight
+      }
+    )
+}
+
+body.product {
   .background {
     height: 100%;
     width: 100%;
     background: no-repeat center fixed;
     background-size: cover;
-    padding-top: 100%;
+    @include pdp-v-offset('small');
+    @include breakpoint(medium up) { @include pdp-v-offset('medium'); }
   }
 
   .product-icon {
@@ -13,7 +38,14 @@
     right: rem-calc(20);
   }
 
-  article {
+  .content {
     background-color: $white;
+    @include breakpoint(medium up) { @include grid-column-collapse; }
+  }
+
+  article {
+    padding: map-get($pdp-v-spacing, 'small') rem-calc(10);
+    @include breakpoint(medium up) { padding: map-get($pdp-v-spacing, 'medium') grid-column(2 of 12); }
+    @include breakpoint(large up) { padding: initial grid-column(2 of 10); }
   }
 }
