@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-    <link rel="stylesheet" href="{{ 'assets/css/main.css' | relative_url }}" />
+    <link rel="stylesheet" href="{% link assets/css/main.css %}" />
   </head>
   <body class="{{ page.layout }}">
     {% include header.html %}
@@ -13,9 +13,11 @@
     {{ content }}
 
     {% unless page.layout == 'product' %}{% include footer.html %}{% endunless %}
-    <script src="{{ 'assets/js/jquery.min.js' | relative_url }}"></script>
-    <script src="{{ 'assets/js/what-input.min.js' | relative_url }}"></script>
-    <script src="{{ 'assets/js/foundation.min.js' | relative_url }}"></script>
+    <script src="{% link assets/js/vendor/jquery.min.js %}"></script>
+    <script src="{% link assets/js/vendor/what-input.min.js %}"></script>
+    <script src="{% link assets/js/vendor/foundation.min.js %}"></script>
+    <script src="{% link assets/js/vendor/svg-injector.min.js %}"></script>
+    <script src="{% link assets/js/main.min.js %}"></script>
     <script>
       $(document).foundation();
     </script>
