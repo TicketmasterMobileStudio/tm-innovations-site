@@ -16,6 +16,10 @@
       position: absolute;
       top: rem-calc(20);
       right: rem-calc(20);
+      color: $white;
+
+      circle { stroke: currentColor; }
+      path { fill: currentColor; }
     }
 
     .content {

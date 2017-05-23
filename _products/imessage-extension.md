@@ -2,8 +2,9 @@
 title: iMessage Extension
 
 image: imessage-extension-placeholder.jpg
-icon: ic-imessage-light.svg
-nav-icon: ic-imessage-light-small.svg
+icon: ic-imessage-dark-filled.svg
+nav-icon: ic-imessage-light.svg
+nav-icon-small: ic-imessage-light-small.svg
 ---
 
 Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Hella narwhal Cosby sweater McSweeneys, salvia kitsch before they sold out High Life. Umami tattooed sriracha.
