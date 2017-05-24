@@ -41,6 +41,10 @@ body.product {
   .content {
     background-color: $white;
     @include breakpoint(medium up) { @include grid-column-collapse; }
+    
+    h1 {
+      font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h2', 'font-size'));
+    }
   }
 
   article {
