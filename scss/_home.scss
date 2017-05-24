@@ -60,6 +60,7 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
     color: $white;
     @include flex;
     position: relative;
+    padding: rem-calc(24 0);
 
     .product-icon {
       position: absolute;
@@ -74,6 +75,20 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
     .content {
       width: 100%;
       @include flex-align-self(middle);
+    }
+
+    .button {
+      margin-bottom: 0;
+    }
+
+    @include breakpoint(medium up) {
+      padding: rem-calc(36 0);
+    }
+  }
+
+  @include breakpoint(medium down) {
+    article .content {
+      @include flex-align-self(bottom);
     }
   }
 }
