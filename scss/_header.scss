@@ -1,12 +1,20 @@
 $topbar-height: rem-calc(72);
 $headband-height: rem-calc(8);
 
-.top-bar {
-  position: fixed;
+.nav-container {
+  position: relative;
   z-index: 1;
+}
+
+.top-bar {
   width: 100%;
   height: $topbar-height + $headband-height;
   padding-top: $headband-height;
+  transition: box-shadow 0.2s;
+
+  &.is-stuck {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  }
 
   // Gradient variables
   $i: 100% / 6; // increment
@@ -47,17 +55,10 @@ $headband-height: rem-calc(8);
     }
   }
 
-  .menu {
-    background: rgba($white, 0.95);
-    position: fixed;
-    top: $topbar-height + $headband-height;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    @include breakpoint(medium only) {
-      width: rem-calc(320);
-      left: auto;
+  #main-menu {
+    .product-nav-icon {
+      circle { stroke: currentColor; }
+      path { fill: currentColor; }
     }
 
     a {
@@ -66,26 +67,90 @@ $headband-height: rem-calc(8);
       font-weight: bold;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      line-height: rem-calc(48);
-      height: rem-calc(48);
-    }
+      transition: color 0.2s;
 
-    .current a {
-      color: $primary-color;
-    }
-
-    &:not(.vertical) {
-      position: static;
-      margin-right: rem-calc(-15);
-
-      .current a {
-        color: $medium-gray;
-        border-bottom: 4px solid $primary-color;        
+      &:hover {
+        color: $primary-color;
       }
+    }
+
+    .active > a {
+      color: $primary-color;
+      background-color: inherit;
+    }
+
+    @include breakpoint(medium down) {
+      background: rgba($white, 0.95);
+      position: absolute;
+      top: $topbar-height + $headband-height;
+      left: 0;
+      right: 0;
+      overflow: auto;
+      height: calc(100vh - #{$topbar-height + $headband-height});
 
       a {
+        line-height: rem-calc(48);
+        height: rem-calc(48);
+      }
+
+      .menu {
+        background: none;
+
+        a {
+          display: flex;
+          flex-flow: row-reverse;
+        }
+
+        .product-nav-icon {
+          margin: 0 0 0 rem-calc(16);
+          @include flex-align-self(middle);
+        }
+      }
+    }
+
+    @include breakpoint(medium only) {
+      width: rem-calc(320);
+      left: auto;
+    }
+
+    @include breakpoint(large up) {
+      margin-right: rem-calc(-15);
+
+      > .active > a {
+        color: $medium-gray;
+      }
+
+      > .active > a {
+        border-bottom: 4px solid $primary-color;
+      }
+
+      > li > a {
         line-height: $topbar-height;
         height: $topbar-height;
+      }
+
+      .submenu {
+        background: rgba($white, 0.95);
+        padding: rem-calc(30 0 24);
+        border: none;
+        position: fixed;
+        width: 100%;
+        text-align: center;
+        @include menu-icons(top);
+
+        .product-nav-icon {
+          margin-bottom: rem-calc(8);
+        }
+
+        li {
+          display: inline-block;
+          width: auto;
+        }
+
+        .active a {
+          // border-bottom: none;
+          // color: $primary-color;
+        }
       }
     }
   }

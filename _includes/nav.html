@@ -1,15 +1,29 @@
-{% assign navLinks = '/, early-access.html' | split: ', ' %}
-{% assign navTitles = 'Products, Early Access' | split: ', ' %}
+{% capture home_url %}{% link index.html %}{% endcapture %}
+{% capture eap_url %}{% link early-access.html %}{% endcapture %}
 
-{% for item in navLinks %}
-  {% assign title = navTitles[forloop.index0] %}
-  {% assign link = item | relative_url %}
-  {% if link == page.url %}
-    <li class="current"><a href="{{ link }}">{{ title }}</a></li>
-  {% else %}
-    <li><a href="{{ link }}">{{ title }}</a></li>
-  {% endif %}
-{% endfor %}
-
+<li{% if home_url == page.url %} class="active"{% endif %}>
+  <a href="{{ home_url }}">Products</a>
+  <ul class="vertical large-horizontal menu">
+    {% for product in site.products %}
+      {% if product.url == page.url %}
+        {% assign active = true %}
+        {% assign icon = product.icon %}
+      {% else %}
+        {% assign active = false %}
+        {% assign icon = product.nav-icon %}
+      {% endif %}
+      <li{% if active %} class="active"{% endif %}>
+        <a href="{{ product.url }}">
+          <img class="product-nav-icon" data-interchange="
+              [{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}, small],
+              [{{ icon | prepend: 'assets/images/' | relative_url }}, large]
+            " alt="">
+          <span>{{ product.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</li>
+<li{% if eap_url == page.url %} class="active"{% endif %}><a href="{{ eap_url }}">Early Access</a></li>
 <li><a href="http://insider.ticketmaster.com/tag/innovations" target="_blank">Insights</a></li>
 <li><a href="http://www.ticketmaster.com" target="_blank">Ticketmaster</a></li>
