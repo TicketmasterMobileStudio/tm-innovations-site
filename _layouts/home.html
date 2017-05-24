@@ -2,7 +2,7 @@
 layout: default
 ---
 <nav class="pager">
-  <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:56">
+  <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:40;threshold:80;">
     <li><a href="#hero"><i></i></a></li>
     {% for product in site.products %}
       {% if forloop.index == 1 %}{% assign firstProduct = 'product-' | append: product.title | slugify %}{% endif %}
@@ -19,7 +19,7 @@ layout: default
       </div>
     </div>
   </div>
-  <div class="more-arrow text-center" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:56">
+  <div class="more-arrow text-center" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:40;">
     <a href="#{{ firstProduct }}"><img src="{% link assets/images/ic-chevron-dark-big.svg %}" alt=""></a>
   </div>
 </section>
