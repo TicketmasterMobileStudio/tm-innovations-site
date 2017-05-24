@@ -26,14 +26,20 @@ layout: default
 
 {% for product in site.products %}
   <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
-    <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+    {% if product.link %}
+      <a href="{{ product.link }}" target="_blank" class="product-icon">
+        <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+      </a>
+    {% else %}
+      <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+    {% endif %}
     <div class="content">
       <div class="row">
         <div class="medium-10 medium-centered large-8 columns">
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
           {% if (product.link) %}
-            {% include button.html url=product.link text='Get It Now' classes='secondary' %}
+            {% include button.html url=product.link text='Get It Now' class='secondary' target='_blank' %}
           {% endif %}
         </div>
       </div>

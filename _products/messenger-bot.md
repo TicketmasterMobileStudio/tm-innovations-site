@@ -12,7 +12,7 @@ Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art 
 
 Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art party, cardigan raw denim quinoa. Hella narwhal Cosby sweater McSweeneys, salvia kitsch before they sold out High Life. Umami tattooed sriracha.
 
-{% include button.html url=page.link text='Start a Conversation' %}
+{% include button.html url=page.link text='Start a Conversation' target='_blank' %}
 
 ## Features
 
@@ -21,4 +21,4 @@ Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art 
 * App automatically updates as conference organizers make edits to schedule
 * All features work offline
 
-{% include button.html url='#' text='Download Press Packet' classes='hollow' %}
+{% include button.html url='#' text='Download Press Packet' class='hollow' %}

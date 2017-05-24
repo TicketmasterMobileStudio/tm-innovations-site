@@ -23,9 +23,11 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
     right: rem-calc(24);
     height: $panel-height;
     display: flex;
+    pointer-events: none;
 
     .menu {
       @include flex-align-self(middle);
+      pointer-events: auto;
     }
 
     li {
