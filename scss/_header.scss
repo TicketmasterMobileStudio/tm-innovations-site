@@ -1,7 +1,7 @@
 $topbar-height: rem-calc(72);
 $headband-height: rem-calc(8);
 
-div[data-sticky-container] {
+.nav-container {
   position: relative;
   z-index: 1;
 }
@@ -56,19 +56,9 @@ div[data-sticky-container] {
   }
 
   #main-menu {
-    @include breakpoint(medium down) {
-      background: rgba($white, 0.95);
-      position: absolute;
-      top: $topbar-height + $headband-height;
-      left: 0;
-      right: 0;
-      overflow: auto;
-      height: calc(100vh - #{$topbar-height + $headband-height});
-    }
-
-    @include breakpoint(medium only) {
-      width: rem-calc(320);
-      left: auto;
+    .product-nav-icon {
+      circle { stroke: currentColor; }
+      path { fill: currentColor; }
     }
 
     a {
@@ -77,24 +67,56 @@ div[data-sticky-container] {
       font-weight: bold;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      line-height: rem-calc(48);
-      height: rem-calc(48);
       transition: color 0.2s;
 
       &:hover {
-        color: $dark-gray;
+        color: $primary-color;
       }
     }
 
-    .active > a, .active > span > a {
+    .active > a {
       color: $primary-color;
       background-color: inherit;
+    }
+
+    @include breakpoint(medium down) {
+      background: rgba($white, 0.95);
+      position: absolute;
+      top: $topbar-height + $headband-height;
+      left: 0;
+      right: 0;
+      overflow: auto;
+      height: calc(100vh - #{$topbar-height + $headband-height});
+
+      a {
+        line-height: rem-calc(48);
+        height: rem-calc(48);
+      }
+
+      .menu {
+        background: none;
+
+        a {
+          display: flex;
+          flex-flow: row-reverse;
+        }
+
+        .product-nav-icon {
+          margin: 0 0 0 rem-calc(16);
+          @include flex-align-self(middle);
+        }
+      }
+    }
+
+    @include breakpoint(medium only) {
+      width: rem-calc(320);
+      left: auto;
     }
 
     @include breakpoint(large up) {
       margin-right: rem-calc(-15);
 
-      .active a {
+      > .active > a {
         color: $medium-gray;
       }
 
@@ -102,17 +124,23 @@ div[data-sticky-container] {
         border-bottom: 4px solid $primary-color;
       }
 
-      a {
+      > li > a {
         line-height: $topbar-height;
         height: $topbar-height;
       }
 
       .submenu {
         background: rgba($white, 0.95);
+        padding: rem-calc(30 0 24);
         border: none;
         position: fixed;
         width: 100%;
         text-align: center;
+        @include menu-icons(top);
+
+        .product-nav-icon {
+          margin-bottom: rem-calc(8);
+        }
 
         li {
           display: inline-block;

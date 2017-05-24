@@ -5,9 +5,21 @@
   <a href="{{ home_url }}">Products</a>
   <ul class="vertical large-horizontal menu">
     {% for product in site.products %}
-      <li{% if product.url == page.url %} class="active"{% endif %}>
-        <img class="product-nav-icon" src="{{ product.nav-icon | prepend: 'assets/images/' | relative_url }}" alt="">
-        <span><a href="{{ product.url }}">{{ product.title }}</a></span>
+      {% if product.url == page.url %}
+        {% assign active = true %}
+        {% assign icon = product.icon %}
+      {% else %}
+        {% assign active = false %}
+        {% assign icon = product.nav-icon %}
+      {% endif %}
+      <li{% if active %} class="active"{% endif %}>
+        <a href="{{ product.url }}">
+          <img class="product-nav-icon" data-interchange="
+              [{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}, small],
+              [{{ icon | prepend: 'assets/images/' | relative_url }}, large]
+            " alt="">
+          <span>{{ product.title }}</span>
+        </a>
       </li>
     {% endfor %}
   </ul>

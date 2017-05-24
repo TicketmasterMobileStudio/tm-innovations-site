@@ -16,15 +16,11 @@ defaults:
 exclude:
   - bower_components
   - node_modules
+  - js
   - scss
   - bower.json
   - Gemfile
   - Gemfile.lock
   - gulpfile.js
   - package.json
-
-keep_files:
-  - assets/css/main.css
-  - assets/js/foundation.min.js
-  - assets/js/jquery.min.js
-  - assets/js/what-input.min.js
+  - README.md

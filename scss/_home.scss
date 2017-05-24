@@ -1,13 +1,60 @@
+$panel-height: calc(100vh - #{$topbar-height + $headband-height});
+
 .home {
+  background: $primary-color;
+
   .hero {
+    position: relative;
     width: 100%; // fixes weird layout bug
     background-image: linear-gradient($primary-color, #2a7cc7);
+
+    .more-arrow {
+      position: absolute;
+      width: 100%;
+      bottom: rem-calc(36);
+    }
+  }
+
+  .pager {
+    position: fixed;
+    z-index: 1;
+    top: $topbar-height + $headband-height;
+    width: rem-calc(26);
+    right: rem-calc(24);
+    height: $panel-height;
+    display: flex;
+
+    .menu {
+      @include flex-align-self(middle);
+    }
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      height: rem-calc(26);
+      line-height: rem-calc(26);
+      width: rem-calc(26);
+    }
+
+    i {
+      margin: 0;
+      width: rem-calc(10);
+      height: rem-calc(10);
+      border: solid rem-calc(1.5) $white;
+      border-radius: rem-calc(5);
+    }
+
+    .active i {
+      background: $white;
+    }
   }
 
   section, article {
     background: no-repeat center;
     background-size: cover;
-    height: calc(100vh - #{$topbar-height + $headband-height});
+    height: $panel-height;
     color: $white;
     @include flex;
     position: relative;
@@ -16,6 +63,10 @@
       position: absolute;
       top: rem-calc(20);
       right: rem-calc(20);
+      color: $white;
+
+      circle { stroke: currentColor; }
+      path { fill: currentColor; }
     }
 
     .content {
