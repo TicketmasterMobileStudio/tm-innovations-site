@@ -17,9 +17,8 @@ This is a GitHub Pages repo for the Ticketmaster Innovations website.
 
 ## Run the server locally
 
-1. Run `gulp` once to build assets (only needed the first time)
-2. Run `gulp watch`
-3. In a separate shell, run `bundle exec jekyll serve`
+1. Run `gulp watch`
+2. In a separate shell, run `bundle exec jekyll serve`
 
 ## Build for production and deploy
 
