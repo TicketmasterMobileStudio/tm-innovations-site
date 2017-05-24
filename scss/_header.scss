@@ -65,7 +65,7 @@ $headband-height: rem-calc(8);
       padding: 0 rem-calc(15);
       color: $medium-gray;
       font-weight: bold;
-      letter-spacing: 0.8px;
+      letter-spacing: rem-calc(0.8);
       text-transform: uppercase;
       transition: color 0.2s;
 
@@ -77,6 +77,10 @@ $headband-height: rem-calc(8);
     .active > a {
       color: $primary-color;
       background-color: inherit;
+
+      &:hover {
+        color: $primary-color;
+      }
     }
 
     @include breakpoint(medium down) {
@@ -91,6 +95,10 @@ $headband-height: rem-calc(8);
       a {
         line-height: rem-calc(48);
         height: rem-calc(48);
+      }
+
+      > .active > a {
+        color: $medium-gray;
       }
 
       .menu {
@@ -109,7 +117,7 @@ $headband-height: rem-calc(8);
     }
 
     @include breakpoint(medium only) {
-      width: rem-calc(320);
+      min-width: rem-calc(320);
       left: auto;
     }
 
@@ -129,6 +137,17 @@ $headband-height: rem-calc(8);
         height: $topbar-height;
       }
 
+      .dropdown-arrow {
+        margin: 0 0 0 rem-calc(8);
+        transition: transform 0.1s;
+
+        path { fill: currentColor; }
+      }
+
+      li.is-active .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
       .submenu {
         background: rgba($white, 0.95);
         padding: rem-calc(30 0 24);
@@ -145,11 +164,6 @@ $headband-height: rem-calc(8);
         li {
           display: inline-block;
           width: auto;
-        }
-
-        .active a {
-          // border-bottom: none;
-          // color: $primary-color;
         }
       }
     }
