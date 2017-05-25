@@ -1,7 +1,9 @@
 ---
 title: iMessage Extension
+date: Sep 2016
 
 image: imessage-extension-placeholder.jpg
+image-interest: left
 icon: ic-imessage-dark-filled.svg
 nav-icon: ic-imessage-light.svg
 nav-icon-small: ic-imessage-light-small.svg

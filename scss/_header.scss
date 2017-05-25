@@ -9,6 +9,9 @@
   padding-top: $headband-height;
   transition: box-shadow 0.2s;
 
+  @include breakpoint(medium up) { padding: $headband-height rem-calc(24) 0; }
+  @include breakpoint(large up) { padding: $headband-height rem-calc(30) 0; }
+
   &.is-stuck {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   }

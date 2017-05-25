@@ -3,6 +3,7 @@
     .footer-container {
       @include grid-row;
     }
+
     footer {
       @include grid-column(10, 0);
       @include grid-column-position(center);

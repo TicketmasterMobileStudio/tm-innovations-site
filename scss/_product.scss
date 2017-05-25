@@ -13,11 +13,11 @@ $pdp-v-spacing: (
         $topbar-height
         + $headband-height
         + map-get($pdp-v-spacing, $size)
-        + rem-calc(map-deep-get($header-styles, $size, 'h2', 'font-size') * $header-lineheight)
+        + rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size')) * map-deep-get($header-styles, $size, 'h1', 'line-height')
         + $header-margin-bottom
         + $paragraph-lineheight
       }
-    )
+    );
 }
 
 body.product {
@@ -62,7 +62,7 @@ body.product {
   }
 
   article {
-    padding: map-get($pdp-v-spacing, 'small') rem-calc(10);
+    padding: map-get($pdp-v-spacing, 'small') rem-calc(5);
     @include breakpoint(medium up) { padding: map-get($pdp-v-spacing, 'medium') grid-column(2 of 12); }
     @include breakpoint(large up) { padding: initial grid-column(2 of 10); }
   }
