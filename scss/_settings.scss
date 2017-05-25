@@ -109,8 +109,8 @@ $header-font-weight: $global-weight-bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-color: inherit;
-$header-lineheight: 1.4;
-$header-margin-bottom: 0.5rem;
+$header-lineheight: unitless-calc(32, 24);
+$header-margin-bottom: 1rem;
 $header-styles: (
   small: (
     'h1': ('font-size': 24),
@@ -121,7 +121,15 @@ $header-styles: (
     'h6': ('font-size': 16),
   ),
   medium: (
-    'h1': ('font-size': 48),
+    'h1': ('font-size': 36, 'line-height': unitless-calc(48, 36)),
+    'h2': ('font-size': 34),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
+  ),
+  large: (
+    'h1': ('font-size': 48, 'line-height': unitless-calc(62, 48)),
     'h2': ('font-size': 36),
     'h3': ('font-size': 31),
     'h4': ('font-size': 25),
@@ -132,7 +140,7 @@ $header-styles: (
 $header-text-rendering: optimizeLegibility;
 $small-font-size: 80%;
 $header-small-font-color: $medium-gray;
-$paragraph-lineheight: 1.6;
+$paragraph-lineheight: 1.5;
 $paragraph-margin-bottom: 1rem;
 $paragraph-text-rendering: optimizeLegibility;
 $code-color: $black;
@@ -251,7 +259,7 @@ $button-radius: $global-radius;
 $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
-  default: 0.9rem,
+  default: 1rem,
   large: 1.25rem,
 );
 $button-palette: $foundation-palette;
@@ -355,7 +363,7 @@ $fieldset-border: 1px solid $medium-gray;
 $fieldset-padding: rem-calc(20);
 $fieldset-margin: rem-calc(18 0);
 $legend-padding: rem-calc(0 3);
-$form-spacing: rem-calc(16);
+$form-spacing: rem-calc(24);
 $helptext-color: $black;
 $helptext-font-size: rem-calc(13);
 $helptext-font-style: italic;
@@ -370,7 +378,7 @@ $form-label-line-height: 1.5;
 $select-background: $white;
 $select-triangle-color: $dark-gray;
 $select-radius: $global-radius;
-$input-color: $black;
+$input-color: $dark-gray;
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
@@ -379,11 +387,11 @@ $input-background: $white;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
 $input-border: none;
-$input-border-focus: 2px solid $dark-gray;
-$input-shadow: inset 0 1px 2px rgba($black, 0.1);
-$input-shadow-focus: 0 0 5px $medium-gray;
+$input-border-focus: none;
+$input-shadow: none;
+$input-shadow-focus: 0 0 0 2px $dark-gray;
 $input-cursor-disabled: not-allowed;
-$input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+$input-transition: box-shadow 0.25s ease-in-out, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;

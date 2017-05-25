@@ -7,7 +7,7 @@
   color: $white;
   position: relative;
 
-  &:after {
+  &:before {
     content: '';
     position: absolute;
     width: 100%;
@@ -17,17 +17,37 @@
   }
 
   .content {
+    padding: rem-calc(36 0);
     position: relative;
-    z-index: 1;
     width: 100%;
     @include flex-align-self(middle);
+  }
+
+  form {
+    margin-top: rem-calc(36);
   }
 
   label {
     color: $white;
   }
 
+  input, select {
+    line-height: inherit;
+    margin-top: rem-calc(8);
+    height: rem-calc(48);
+    padding-left: rem-calc(16);
+    padding-right: rem-calc(16);
+  }
+
+  select {
+    background-image: url(../images/ic-chevron-light-small.svg);
+    background-size: 10px 7px;
+    background-position: right center;
+  }
+
   .button {
     @include button-style($white, auto, $primary-color);
+    margin: rem-calc(12 0 0);
+    line-height: 1;
   }
 }
