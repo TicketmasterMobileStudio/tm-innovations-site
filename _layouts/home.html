@@ -50,7 +50,7 @@ layout: default
         <div class="{{ column-classes }}">
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
-          {% if (product.link) %}
+          {% if product.link %}
             {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
             {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
           {% endif %}
