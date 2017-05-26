@@ -20,12 +20,16 @@
   .pager {
     position: fixed;
     z-index: 1;
-    top: $topbar-height + $headband-height;
+    top: $header-height;
     width: rem-calc(26);
-    right: rem-calc(24);
+    right: map-get($side-margins, medium) - rem-calc(8);
     height: $panel-height;
     display: flex;
     pointer-events: none;
+
+    @include breakpoint(large up) {
+      right: map-get($side-margins, large) - rem-calc(8);
+    }
 
     .menu {
       @include flex-align-self(middle);
@@ -66,8 +70,7 @@
 
     .product-icon {
       position: absolute;
-      top: rem-calc(20);
-      right: rem-calc(20);
+      @include side-margins(top right);
       color: $white;
 
       circle { stroke: currentColor; }
