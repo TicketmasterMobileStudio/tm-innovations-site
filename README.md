@@ -17,8 +17,7 @@ This is a GitHub Pages repo for the Ticketmaster Innovations website.
 
 ## Run the server locally
 
-1. Run `gulp watch`
-2. In a separate shell, run `bundle exec jekyll serve`
+1. Run `gulp serve`
 
 ## Build for production and deploy
 
@@ -28,8 +27,6 @@ This is a GitHub Pages repo for the Ticketmaster Innovations website.
 
 ## To do
 
-* Add build script for production
-* Consolidate dev script to a single command
 * Slim down the dev stack (remove Bower?)
 
 ## Development stack

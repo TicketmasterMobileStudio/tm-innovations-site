@@ -8,6 +8,9 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var pump = require('pump');
+var browserSync = require('browser-sync').create();
+var child = require('child_process');
+var gutil = require('gulp-util');
 
 gulp.task('sass', (cb) => {
   pump([
@@ -51,7 +54,32 @@ gulp.task('js', (cb) => {
   );
 });
 
-gulp.task('watch', ['default'], () => {
+gulp.task('jekyll', () => {
+  const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'build',
+    '--watch',
+    '--incremental',
+    '--drafts'
+  ]);
+
+  const jekyllLogger = (buffer) => {
+    buffer.toString()
+      .split(/\n/)
+      .forEach((message) => gutil.log('Jekyll: ' + message));
+  };
+
+  jekyll.stdout.on('data', jekyllLogger);
+  jekyll.stderr.on('data', jekyllLogger);
+});
+
+gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll'], () => {
+  browserSync.init({
+    files: ['_site/**'],
+    port: 4000,
+    server: {
+      baseDir: '_site'
+    }
+  });
+
   gulp.watch(['scss/**/*.scss'], ['sass']);
   gulp.watch(['js/*.js'], ['js']);
 });
