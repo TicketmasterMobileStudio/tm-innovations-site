@@ -1,10 +1,13 @@
 {% capture home_url %}{% link index.html %}{% endcapture %}
 {% capture eap_url %}{% link early-access.html %}{% endcapture %}
+{% assign products = site.products | sort: 'date' | reverse %}
 
-<li{% if home_url == page.url %} class="active"{% endif %}>
-  <a href="{{ home_url }}">Products</a>
+<li class="is-dropdown-submenu-parent{% if page.url == home_url or page.layout == 'product' %} active{% endif %}">
+  <a href="{{ home_url }}">
+    <span>Products</span><img class="dropdown-arrow show-for-large" src="{% link assets/images/ic-chevron-light-small.svg %}" alt="">
+  </a>
   <ul class="vertical large-horizontal menu">
-    {% for product in site.products %}
+    {% for product in products %}
       {% if product.url == page.url %}
         {% assign active = true %}
         {% assign icon = product.icon %}

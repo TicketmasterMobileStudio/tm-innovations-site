@@ -1,10 +1,12 @@
 ---
 layout: default
 ---
+
+{% assign products = site.products | sort: 'date' | reverse %}
 <nav class="pager">
-  <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:56">
+  <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:40;threshold:80;">
     <li><a href="#hero"><i></i></a></li>
-    {% for product in site.products %}
+    {% for product in products %}
       {% if forloop.index == 1 %}{% assign firstProduct = 'product-' | append: product.title | slugify %}{% endif %}
       <li><a href="#product-{{ product.title | slugify }}"><i></i></a></li>
     {% endfor %}
@@ -19,21 +21,38 @@ layout: default
       </div>
     </div>
   </div>
-  <div class="more-arrow text-center" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:56">
+  <div class="more-arrow text-center" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:55;">
     <a href="#{{ firstProduct }}"><img src="{% link assets/images/ic-chevron-dark-big.svg %}" alt=""></a>
   </div>
 </section>
 
-{% for product in site.products %}
+{% for product in products %}
+  {% capture column-classes %}
+    {% case product.image-interest %}
+      {% when 'right' %}
+        medium-6 large-4 large-offset-1 columns
+      {% when 'left' %}
+        medium-6 medium-offset-6 large-4 large-offset-7 columns
+      {% else %}
+        medium-10 medium-centered large-8 columns
+    {% endcase %}
+  {% endcapture %}
   <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
-    <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+    {% if product.link %}
+      <a href="{{ product.link }}" target="_blank" class="product-icon">
+        <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+      </a>
+    {% else %}
+      <img class="product-icon" src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+    {% endif %}
     <div class="content">
       <div class="row">
-        <div class="medium-10 medium-centered large-8 columns">
+        <div class="{{ column-classes }}">
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
           {% if (product.link) %}
-            {% include button.html url=product.link text='Get It Now' classes='secondary' %}
+            {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
+            {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
           {% endif %}
         </div>
       </div>

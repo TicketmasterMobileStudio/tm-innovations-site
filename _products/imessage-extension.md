@@ -1,7 +1,9 @@
 ---
 title: iMessage Extension
+date: Sep 2016
 
 image: imessage-extension-placeholder.jpg
+image-interest: left
 icon: ic-imessage-dark-filled.svg
 nav-icon: ic-imessage-light.svg
 nav-icon-small: ic-imessage-light-small.svg
@@ -18,4 +20,4 @@ Fixie tote bag ethnic keytar. Neutra vinyl American Apparel kale chips tofu art 
 * App automatically updates as conference organizers make edits to schedule
 * All features work offline
 
-{% include button.html url='#' text='Download Press Packet' classes='hollow' %}
+{% include button.html url='#' text='Download Press Packet' class='hollow' %}

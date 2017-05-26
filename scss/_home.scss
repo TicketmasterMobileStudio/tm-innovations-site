@@ -1,5 +1,3 @@
-$panel-height: calc(100vh - #{$topbar-height + $headband-height});
-
 .home {
   background: $primary-color;
 
@@ -7,6 +5,10 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
     position: relative;
     width: 100%; // fixes weird layout bug
     background-image: linear-gradient($primary-color, #2a7cc7);
+
+    h1 {
+      font-weight: $global-weight-normal;
+    }
 
     .more-arrow {
       position: absolute;
@@ -18,14 +20,20 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
   .pager {
     position: fixed;
     z-index: 1;
-    top: $topbar-height + $headband-height;
+    top: $header-height;
     width: rem-calc(26);
-    right: rem-calc(24);
+    right: map-get($side-margins, medium) - rem-calc(8);
     height: $panel-height;
     display: flex;
+    pointer-events: none;
+
+    @include breakpoint(large up) {
+      right: map-get($side-margins, large) - rem-calc(8);
+    }
 
     .menu {
       @include flex-align-self(middle);
+      pointer-events: auto;
     }
 
     li {
@@ -58,20 +66,49 @@ $panel-height: calc(100vh - #{$topbar-height + $headband-height});
     color: $white;
     @include flex;
     position: relative;
+    padding: rem-calc(24 0);
 
     .product-icon {
       position: absolute;
-      top: rem-calc(20);
-      right: rem-calc(20);
+      @include side-margins(top right);
       color: $white;
 
       circle { stroke: currentColor; }
       path { fill: currentColor; }
     }
 
+
+    h2 {
+      @each $size, $headers in $header-styles {
+        @include breakpoint($size) {
+          font-size: rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size'));
+          line-height: map-deep-get($header-styles, $size, 'h1', 'letter-spacing');
+        }
+      }
+      margin-bottom: rem-calc(24);
+    }
+
     .content {
       width: 100%;
       @include flex-align-self(middle);
+    }
+
+    .button {
+      margin: rem-calc(0 8);
+
+      &.secondary {
+        @include button-style($white, auto, $primary-color);
+      }
+    }
+
+    @include breakpoint(medium up) {
+      padding: rem-calc(36 0);
+    }
+  }
+
+  @include breakpoint(small only) {
+    article .content {
+      @include flex-align-self(bottom);
     }
   }
 }

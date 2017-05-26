@@ -1,0 +1,36 @@
+// Variables
+$topbar-height: rem-calc(72);
+$headband-height: rem-calc(8);
+$header-height: $topbar-height + $headband-height;
+$panel-height: calc(100vh - #{$header-height});
+
+$side-margins: (
+  small: rem-calc(20),
+  medium: rem-calc(24),
+  large: rem-calc(30)
+);
+
+// Responsive margins
+@mixin side-margins($properties: padding-left padding-right) {
+  @each $size, $value in $side-margins {
+    @if ($size == 'small') {
+      @each $prop in $properties {
+        #{$prop}: $value;
+      }
+    } @else {
+      @include breakpoint($size up) {
+        @each $prop in $properties {
+          #{$prop}: $value;
+        }
+      }
+    }
+  }
+}
+
+// Style overrides
+.button {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: $global-weight-bold;
+  letter-spacing: rem-calc(0.8);
+}
