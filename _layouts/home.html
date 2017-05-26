@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+
 {% assign products = site.products | sort: 'date' | reverse %}
 <nav class="pager">
   <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:40;threshold:80;">
@@ -50,7 +51,8 @@ layout: default
           <h2>{{ product.title }}</h2>
           {% include button.html url=product.url text='Learn More' %}
           {% if (product.link) %}
-            {% include button.html url=product.link text='Get It Now' class='secondary' target='_blank' %}
+            {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
+            {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
           {% endif %}
         </div>
       </div>
