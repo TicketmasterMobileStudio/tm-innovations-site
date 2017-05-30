@@ -37,7 +37,7 @@ layout: default
         medium-10 medium-centered large-8 columns
     {% endcase %}
   {% endcapture %}
-  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
+  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.image-interest }}" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
     {% if product.link %}
       <a href="{{ product.link }}" target="_blank" class="product-icon">
         <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
@@ -49,11 +49,13 @@ layout: default
       <div class="row">
         <div class="{{ column-classes }}">
           <h2>{{ product.title }}</h2>
-          {% include button.html url=product.url text='Learn More' %}
-          {% if product.link %}
-            {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
-            {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
-          {% endif %}
+          <div class="button-group">
+            {% include button.html url=product.url text='Learn More' %}
+            {% if product.link %}
+              {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
+              {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>

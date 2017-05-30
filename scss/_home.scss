@@ -12,8 +12,9 @@
 
     .more-arrow {
       position: absolute;
-      width: 100%;
+      left: 0;
       bottom: rem-calc(36);
+      width: 100%;
     }
   }
 
@@ -93,8 +94,16 @@
       @include flex-align-self(middle);
     }
 
+    .button-group {
+      margin: 0 rem-calc(-8 -16);
+    }
+
     .button {
-      margin: rem-calc(0 8);
+      margin: rem-calc(0 8 16);
+
+      &:last-child {
+        margin-right: rem-calc(8);
+      }
 
       &.secondary {
         @include button-style($white, auto, $primary-color);
@@ -107,6 +116,14 @@
   }
 
   @include breakpoint(small only) {
+    article.image-interest-left {
+      background-position: 25%;
+    }
+
+    article.image-interest-right {
+      background-position: 75%;
+    }
+
     article .content {
       @include flex-align-self(bottom);
     }

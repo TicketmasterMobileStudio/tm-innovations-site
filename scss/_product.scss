@@ -6,7 +6,7 @@ $pdp-v-spacing: (
 
 // calculate padding in order to show title and 1 line of text
 @mixin pdp-v-offset($size) {
-  padding-top:
+  margin-top:
     calc(
       100vh -
       #{
@@ -21,13 +21,24 @@ $pdp-v-spacing: (
 }
 
 body.product {
+
+  // TODO: Get rid of this presentational div, yuck
   .background {
-    height: 100%;
-    width: 100%;
-    background: no-repeat center fixed;
+    height: calc(100vh - #{$header-height});
+    width: 100vw;
+    position: fixed;
+    z-index: -1;
+    top: $header-height;
+    left: 0;
+    background-image: linear-gradient($primary-color, #2a7cc7);
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
-    @include pdp-v-offset('small');
-    @include breakpoint(medium up) { @include pdp-v-offset('medium'); }
+
+    @include breakpoint(medium down) {
+      &.image-interest-left { background-position: 25%; }
+      &.image-interest-right { background-position: 75%; }
+    }
   }
 
   .product-icon {
@@ -38,7 +49,12 @@ body.product {
 
   .content {
     background-color: $white;
-    @include breakpoint(medium up) { @include grid-column-collapse; }
+    @include pdp-v-offset('small');
+
+    @include breakpoint(medium up) {
+      @include pdp-v-offset('medium');
+      @include grid-column-collapse;
+    }
 
     // Override sizing - this could use some optimizing
     // Cap h1 size at medium breakpoint
