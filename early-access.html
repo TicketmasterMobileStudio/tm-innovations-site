@@ -2,7 +2,10 @@
 layout: default
 ---
 
-<div class="eap" style="background-image:url({{ site.products.first.image | prepend: 'assets/images/' | relative_url }})">
+{% assign sorted_products = site.products | sort: 'date' | reverse %}
+{% assign image = sorted_products.first.image | prepend: 'assets/images/' | relative_url %}
+
+<div class="eap" style="background-image:url({{ image }})">
   <div class="content text-center">
     <div class="row small-collapse medium-uncollapse">
       <div class="small-centered medium-8 large-6 columns">
