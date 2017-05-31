@@ -33,4 +33,46 @@ $side-margins: (
   text-transform: uppercase;
   font-weight: $global-weight-bold;
   letter-spacing: rem-calc(0.8);
+
+  @include breakpoint(medium up) {
+    padding-left: rem-calc(24);
+    padding-right: rem-calc(24);
+  }
+}
+
+html.is-reveal-open, html.is-reveal-open body {
+  position: static; // don't scroll page when reveal modal is open
+  min-width: 100%; // fix layout bug when reveal is used
+}
+
+.reveal {
+  top: 50vh !important;
+  transform: translateY(-50%);
+
+  .button {
+    margin: rem-calc(8 0 0);
+  }
+
+  .close-button {
+    font-size: inherit;
+    top: 1rem;
+  }
+
+  @include breakpoint(small only) {
+    height: auto;
+    min-height: auto;
+    left: auto;
+    margin-left: auto;
+    width: calc(100vw - #{map-get($side-margins, small)} * 2);
+  }
+
+  .content {
+    position: relative;
+    background: $white;
+    padding: rem-calc(36 20);
+
+    @include breakpoint(medium up) {
+      padding: rem-calc(60);
+    }
+  }
 }

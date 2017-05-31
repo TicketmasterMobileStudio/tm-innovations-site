@@ -41,9 +41,25 @@ layout: default
             </label>
           </div>
           <div class="row column text-center">
-            <input type="submit" class="button" name="" value="Sign Up">
+            <input type="button" class="button" name="" value="Sign Up" data-open="success-modal">
           </div>
         </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="reveal text-center" id="success-modal" data-reveal>
+    <div class="row small-collapse medium-uncollapse">
+      <div class="medium-8 medium-centered large-6 columns">
+        <div class="content">
+          <h2>Success!</h2>
+          <p>You have successfully joined the Early Access Program. We’ll be in touch shortly to let you know about our next big thing.</p>
+          <button class="button" data-close type="button">Done</button>
+          <button class="close-button" data-close aria-label="Close modal" type="button">
+            <img src="{% link assets/images/ic-close.svg %}" alt="">
+          </button>
+        </div>
       </div>
     </div>
   </div>

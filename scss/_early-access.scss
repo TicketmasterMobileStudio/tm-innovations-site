@@ -21,11 +21,11 @@
     position: relative;
     width: 100%;
     @include flex-align-self(middle);
-  }
 
-  @include breakpoint(medium up) {
-    padding-left: 0;
-    padding-right: 0;
+    @include breakpoint(medium up) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   form {
@@ -36,7 +36,7 @@
     color: $white;
   }
 
-  input, select {
+  select, input:not([type=button], [type=submit]) {
     line-height: inherit;
     margin-top: rem-calc(8);
     height: rem-calc(48);
