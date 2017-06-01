@@ -115,17 +115,17 @@
     }
   }
 
+  // Use the vertical layout for medium-sized portrait screens
+  @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
+    .image-interest-left { background-position: 25%; }
+    .image-interest-right { background-position: 75%; }
+    article .content { @include flex-align-self(bottom); }
+    .content .medium-6.columns { @include grid-column-offset(3); }
+  }
+
   @include breakpoint(small only) {
-    article.image-interest-left {
-      background-position: 25%;
-    }
-
-    article.image-interest-right {
-      background-position: 75%;
-    }
-
-    article .content {
-      @include flex-align-self(bottom);
-    }
+    .image-interest-left { background-position: 25%; }
+    .image-interest-right { background-position: 75%; }
+    article .content { @include flex-align-self(bottom); }
   }
 }
