@@ -1,16 +1,3 @@
-@include breakpoint(large up) {
-  body.product {
-    .footer-container {
-      @include grid-row;
-    }
-
-    footer {
-      @include grid-column(10, 0);
-      @include grid-column-position(center);
-    }
-  }
-}
-
 footer {
   padding: rem-calc(36 20);
   color: $white;
@@ -48,5 +35,4 @@ footer {
       margin-right: rem-calc(30);
     }
   }
-
 }

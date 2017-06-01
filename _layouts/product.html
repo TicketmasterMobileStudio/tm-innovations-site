@@ -3,12 +3,16 @@ layout: default
 ---
 <div class="background image-interest-{{ page.image-interest }}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})"></div>
 <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-<div class="row">
+<div class="row small-collapse large-uncollapse">
   <div class="medium-12 large-10 large-centered columns content">
     <article>
-      <h1>{{ page.title }}</h1>
-      {{ content }}
+      <div class="inner-content-container">
+        <div class="inner-content">
+          <h1>{{ page.title }}</h1>
+          {{ content }}
+        </div>
+      </div>
     </article>
+    {% include footer.html %}
   </div>
 </div>
-{% include footer.html %}

@@ -48,12 +48,10 @@ body.product {
   }
 
   .content {
-    background-color: $white;
     @include pdp-v-offset('small');
 
     @include breakpoint(medium up) {
       @include pdp-v-offset('medium');
-      @include grid-column-collapse;
     }
 
     // Override sizing - this could use some optimizing
@@ -77,9 +75,30 @@ body.product {
     }
   }
 
+  // TODO: Simplify this insanity
   article {
-    padding: map-get($pdp-v-spacing, 'small') rem-calc(5);
-    @include breakpoint(medium up) { padding: map-get($pdp-v-spacing, 'medium') grid-column(2 of 12); }
-    @include breakpoint(large up) { padding: initial grid-column(2 of 10); }
+    background-color: $white;
+
+    .inner-content-container {
+      @include grid-row;
+
+      @include breakpoint(large up) {
+        @include grid-row(null, nest);
+      }
+    }
+
+    .inner-content {
+      padding: map-get($pdp-v-spacing, small) map-get($side-margins, small);
+
+      @include breakpoint(medium up) {
+        padding: map-get($pdp-v-spacing, medium) 0;
+        @include grid-column(8);
+        @include grid-column-position(center);
+      }
+
+      @include breakpoint(large up) {
+        @include grid-column-size(6 of 10);
+      }
+    }
   }
 }
