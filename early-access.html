@@ -7,45 +7,49 @@ layout: default
 
 <div class="eap" style="background-image:url({{ image }})">
   <div class="content text-center">
-    <div class="row small-collapse medium-uncollapse">
-      <div class="small-centered medium-8 large-6 columns">
-        <h1>Sign up for Early Access</h1>
-        <p>Ticketmaster’s Early Access Program allows you to see the coolest and newest things we’re working on before anyone else. Sign up, get that new new.</p>
-
-        <form class="text-left">
-          <div class="row small-collapse medium-uncollapse">
+    <form data-abide novalidate>
+      <div class="row small-collapse medium-uncollapse">
+        <div class="small-centered medium-8 large-6 columns">
+          <h1>Sign up for Early Access</h1>
+          <p>Ticketmaster’s Early Access Program allows you to see the coolest and newest things we’re working on before anyone else. Sign up, get that new new.</p>
+          <div class="row small-collapse medium-uncollapse text-left">
             <div class="medium-6 columns">
               <label>First name
-                <input type="text">
+                <input type="text" required>
+                <span class="form-error">All fields required.</span>
               </label>
             </div>
             <div class="medium-6 columns">
               <label>Last name
-                <input type="text">
+                <input type="text" required>
+                <span class="form-error">All fields required.</span>
               </label>
             </div>
           </div>
-          <div class="column row">
+          <div class="column row text-left">
             <label>Email
-              <input type="email">
+              <input type="email" required>
+              <span class="form-error">Valid email required.</span>
             </label>
           </div>
-          <div class="column row">
+          <div class="column row text-left">
             <label>What type of phone do you use?
-              <select>
+              <select required>
                 <option value="">(none selected)</option>
                 <option value="iPhone">iPhone</option>
                 <option value="Android">Android</option>
                 <option value="iPhone &amp; Android (both)">iPhone &amp; Android (both)</option>
               </select>
+              <span class="form-error">Please select a phone type.</span>
             </label>
           </div>
-          <div class="row column text-center">
-            <input type="button" class="button" name="" value="Sign Up" data-open="success-modal">
+          <div class="row column">
+            <input type="submit" class="button" name="" value="Sign Up">
           </div>
-        </form>
+        </div>
+        <!-- <div data-abide-error class="large-3 large-offset-9 columns validation-errors" style="display: none;">All fields required.</div> -->
       </div>
-    </div>
+    </form>
   </div>
 
 

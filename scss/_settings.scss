@@ -54,7 +54,7 @@ $foundation-palette: (
   secondary: #d0006f,
   success: #3adb76,
   warning: #ffae00,
-  alert: #cc4b37,
+  alert: #d0006f,
 );
 $light-gray: #b7c9d3;
 $medium-gray: #768692;
@@ -195,10 +195,10 @@ $stat-font-size: 2.5rem;
 
 $abide-inputs: true;
 $abide-labels: true;
-$input-background-invalid: get-color(alert);
+$input-background-invalid: $white;
 $form-label-color-invalid: get-color(alert);
 $input-error-color: get-color(alert);
-$input-error-font-size: rem-calc(12);
+$input-error-font-size: $global-font-size;
 $input-error-font-weight: $global-weight-bold;
 
 // 7. Accordion

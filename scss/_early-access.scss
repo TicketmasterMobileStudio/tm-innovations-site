@@ -34,6 +34,8 @@
 
   label {
     color: $white;
+    position: relative;
+    @include clearfix;
   }
 
   select, input:not([type=button], [type=submit]) {
@@ -54,6 +56,62 @@
     @include button-style($white, auto, $primary-color);
     margin: rem-calc(12 0 0);
     line-height: 1;
+  }
+
+  // validation
+  .is-invalid-input:not(:focus) {
+    box-shadow: 0 0 0 2px $alert-color;
+  }
+
+  .form-error {
+    width: 100%;
+    @include horizontal-center;
+    bottom: 100%;
+    text-align: center;
+    white-space: nowrap;
+    background: $alert-color;
+    color: $white;
+    padding: rem-calc(12 16);
+    margin: 0 0 rem-calc(8);
+    border-radius: $global-radius;
+
+    @include breakpoint(medium down) {
+      &:after {
+        @include horizontal-center;
+        top: 100%;
+        @include css-triangle(rem-calc(8), $alert-color, down);
+      }
+    }
+
+    @include breakpoint(medium) {
+      width: auto;
+    }
+
+    @include breakpoint(large) {
+      text-align: left;
+      width: calc(50% - #{map-get($grid-column-gutter, medium)} / 2);
+      transform: none;
+      bottom: rem-calc(24);
+      margin-bottom: 0;
+      left: calc(100% + #{map-get($grid-column-gutter, small)});
+
+      &:after {
+        @include vertical-center;
+        right: 100%;
+        @include css-triangle(rem-calc(8), $alert-color, left);
+      }
+    }
+  }
+
+  .medium-6.columns {
+    @include breakpoint(large) {
+      &:first-child .form-error {
+        left: calc(200% + #{map-get($grid-column-gutter, small)} * 2);
+      }
+      .form-error {
+        width: 100%;
+      }
+    }
   }
 
   // fix foundation specificity bug
