@@ -70,9 +70,17 @@
     padding: rem-calc(24 0);
 
     .product-icon {
-      position: absolute;
-      @include side-margins(top right);
+      order: 1;
+      margin-top: rem-calc(-24);
+      @include breakpoint(large) { margin-top: rem-calc(-36); }
       color: $white;
+
+      .sticky-content {
+        @include side-margins(padding-top padding-right padding-bottom);
+        @each $size, $margin in $side-margins {
+          @include breakpoint($size) { margin-left: -(rem-calc(44) + $margin); }
+        }
+      }
 
       circle { stroke: currentColor; }
       path { fill: currentColor; }
