@@ -1,5 +1,7 @@
 'use strict';
 
+$(document).foundation();
+
 $(document).ready(function() {
   // Inject SVGs so we can change colors
   var $SVGImgs = $('.product-nav-icon, .dropdown-arrow');
