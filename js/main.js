@@ -2,9 +2,48 @@
 
 $(document).ready(function() {
   // Inject SVGs so we can change colors
-  $('.product-nav-icon, .dropdown-arrow').each(function() {
-    $(this).on('replaced.zf.interchange', SVGInjector(this));
+  var $SVGImgs = $('.product-nav-icon, .dropdown-arrow');
+
+  function injectCopy() {
+    var $img = $(this);
+    var $copy = $img.clone();
+    var $oldSVG = $img.next('.injected-svg');
+
+    if ($oldSVG.length > 0) {
+      $oldSVG.remove();
+      $copy.show();
+    } else {
+      $img.hide();
+    }
+
+    $img.after($copy);
+    SVGInjector($copy.get(0));
+  }
+
+  $SVGImgs.on('replaced.zf.interchange', injectCopy);
+  $SVGImgs.each(injectCopy);
+
+  // Call responsive dropdown manually, since the builtin method breaks on resize
+  var $menu = $('#main-menu');
+  var $btn = $('#menu-button');
+  var sizes = ['small', 'medium'];
+
+  $(window).on('changed.zf.mediaquery', function(e, newSize, oldSize) {
+    if ($.inArray(newSize, sizes) !== -1 && $.inArray(oldSize, sizes) === -1) {
+      $menu.foundation('destroy');
+    } else if ($.inArray(newSize, sizes) === -1 && $.inArray(oldSize, sizes) !== -1) {
+      var menu = new Foundation.DropdownMenu($menu);
+    }
+
+    if ($btn.hasClass('open')) {
+      $btn.removeClass('open');
+    }
   });
+
+  // Add the dropdown on first load on large screens
+  if (Foundation.MediaQuery.atLeast('large')) {
+    var menu = new Foundation.DropdownMenu($menu);
+  }
 
   // Set the panel height on mobile screens to account for collapsing browser chrome
   if (Foundation.MediaQuery.current == 'small') {

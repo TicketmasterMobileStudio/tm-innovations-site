@@ -157,6 +157,8 @@
         padding: rem-calc(30 0 24);
         border: none;
         position: fixed;
+        left: 0;
+        top: $header-height;
         width: 100%;
         text-align: center;
         @include menu-icons(top);
