@@ -175,3 +175,18 @@
     }
   }
 }
+
+// Avoid FOUC
+.no-js {
+  @include breakpoint(medium down) {
+    #main-menu {
+      display: none;
+    }
+  }
+
+  @include breakpoint(large up) {
+    #menu-button, #main-menu .menu {
+      display: none;
+    }
+  }
+}
