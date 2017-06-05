@@ -61,6 +61,7 @@
   }
 
   section, article {
+    overflow: hidden;
     background: no-repeat center;
     background-size: cover;
     height: $panel-height;

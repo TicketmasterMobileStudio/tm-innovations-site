@@ -42,6 +42,7 @@ body.product {
   }
 
   .content {
+    position: relative; // fix z-index
     @include vertical-offset('small');
 
     @include breakpoint(medium up) {
