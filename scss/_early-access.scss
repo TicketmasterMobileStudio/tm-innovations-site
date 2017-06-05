@@ -17,19 +17,14 @@
   }
 
   .content {
-    padding: rem-calc(36) map-get($side-margins, small);
+    padding: map-get($vertical-spacing, small) map-get($side-margins, small);
     position: relative;
     width: 100%;
     @include flex-align-self(middle);
 
     @include breakpoint(medium up) {
-      padding-left: 0;
-      padding-right: 0;
+      padding: map-get($vertical-spacing, medium) 0;
     }
-  }
-
-  form {
-    margin-top: rem-calc(36);
   }
 
   label {
