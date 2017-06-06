@@ -2,7 +2,9 @@
 layout: default
 ---
 <div class="background image-interest-{{ page.image-interest }}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})"></div>
-<img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+<a href="{{ page.link }}" target="_blank">
+  <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+</a>
 <div class="row small-collapse large-uncollapse">
   <div class="medium-12 large-10 large-centered columns content">
     <article>
