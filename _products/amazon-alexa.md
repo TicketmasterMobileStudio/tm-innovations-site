@@ -1,5 +1,6 @@
 ---
 title: Amazon Alexa
+short-title: Alexa
 link: https://www.amazon.com/Amazon-Echo-And-Alexa-Devices/b?ie=UTF8&node=9818047011
 link-text: All The Covfefe
 date: May 30 2017

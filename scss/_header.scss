@@ -168,12 +168,21 @@
         }
 
         li {
-          display: inline-block;
-          width: auto;
+          width: rem-calc(116);
+        }
+
+        a {
+          padding: 0;
         }
       }
     }
   }
+}
+
+// Avoid Foundation cascade issue
+.is-dropdown-submenu.js-dropdown-active {
+  display: flex;
+  justify-content: center;
 }
 
 // Avoid FOUC

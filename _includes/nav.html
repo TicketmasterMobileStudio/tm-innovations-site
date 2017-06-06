@@ -21,7 +21,7 @@
               [{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}, small],
               [{{ icon | prepend: 'assets/images/' | relative_url }}, large]
             " alt="">
-          <span>{{ product.title }}</span>
+          <span data-title="{{ product.title }}" data-shorttitle="{{ product.short-title }}">{{ product.title }}</span>
         </a>
       </li>
     {% endfor %}

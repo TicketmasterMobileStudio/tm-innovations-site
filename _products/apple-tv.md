@@ -1,5 +1,6 @@
 ---
 title: Apple TV
+short-title: Apple TV
 link: https://www.apple.com/tv/
 date: May 28 2017
 

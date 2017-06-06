@@ -1,5 +1,6 @@
 ---
 title: Google Assistant
+short-title: Assistant
 link: https://assistant.google.com/
 link-text: Get Chatty
 date: May 31 2017
