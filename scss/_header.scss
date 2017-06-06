@@ -139,6 +139,8 @@
       }
 
       .dropdown-arrow {
+        position: relative;
+        top: rem-calc(-2);
         margin: 0 0 0 rem-calc(8);
         transition: transform 0.1s;
 
