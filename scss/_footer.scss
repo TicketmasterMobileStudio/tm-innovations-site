@@ -5,6 +5,8 @@ footer {
 
   .footer-logo {
     margin-bottom: rem-calc(16);
+    position: relative;
+    top: rem-calc(-1);
   }
 
   p {
