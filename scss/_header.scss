@@ -15,32 +15,29 @@
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   }
 
-  // Gradient variables
-  $i: 100% / 6; // increment
+  // Gradient divs, workaround for chrome bug
   $p: $primary-color;
   $s: $secondary-color;
 
-  &:before {
-    display: block;
-    height: $headband-height;
+  .headband {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(
-      to right,
-      $p $i,
-      mix($p, $s, 90%) $i,
-      mix($p, $s, 90%) $i * 2,
-      mix($p, $s, 80%) $i * 2,
-      mix($p, $s, 80%) $i * 3,
-      mix($p, $s, 20%) $i * 3,
-      mix($p, $s, 20%) $i * 4,
-      mix($p, $s, 10%) $i * 4,
-      mix($p, $s, 10%) $i * 5,
-      $s $i * 5,
-      $s 100%
-    );
+
+    div {
+      flex: 1;
+      height: $headband-height;
+
+      &:nth-child(1) { background-color: $p; }
+      &:nth-child(2) { background-color: mix($p, $s, 90%); }
+      &:nth-child(3) { background-color: mix($p, $s, 80%); }
+      &:nth-child(4) { background-color: mix($p, $s, 20%); }
+      &:nth-child(5) { background-color: mix($p, $s, 10%); }
+      &:nth-child(6) { background-color: $s; }
+    }
   }
 
   .custom-menu-icon {
