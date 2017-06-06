@@ -25,6 +25,14 @@
     @include breakpoint(medium up) {
       padding: map-get($vertical-spacing, medium) 0;
     }
+
+    p {
+      margin-bottom: map-get($vertical-spacing, small);
+
+      @include breakpoint(medium) {
+        margin-bottom: map-get($vertical-spacing, medium);
+      }
+    }
   }
 
   label {
@@ -49,7 +57,8 @@
 
   .button {
     @include button-style($white, auto, $primary-color);
-    margin: rem-calc(12 0 0);
+    margin: (map-get($vertical-spacing, small) - rem-calc(24)) 0 0;
+    @include breakpoint(medium) { margin-top: map-get($vertical-spacing, medium) - rem-calc(24); }
     line-height: 1;
   }
 
