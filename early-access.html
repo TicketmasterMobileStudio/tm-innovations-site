@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Early Access
 ---
 
 {% assign sorted_products = site.products | sort: 'date' | reverse %}
@@ -7,34 +8,34 @@ layout: default
 
 <div class="eap" style="background-image:url({{ image }})">
   <div class="content text-center">
-    <form data-abide novalidate>
+    <form action="//ticketmaster.us15.list-manage.com/subscribe/post-json?u=5f3735e85240d46281743bbcc&amp;id=d86d9ccf21&amp;c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" data-abide novalidate>
       <div class="row small-collapse medium-uncollapse">
         <div class="small-centered medium-8 large-6 columns">
           <h1>Sign up for Early Access</h1>
           <p>Ticketmaster’s Early Access Program allows you to see the coolest and newest things we’re working on before anyone else. Sign up, get that new new.</p>
           <div class="row small-collapse medium-uncollapse text-left">
             <div class="medium-6 columns">
-              <label>First name
-                <input type="text" required>
+              <label for="mce-FNAME">First name
+                <input type="text" value="" name="FNAME" id="mce-FNAME" required>
                 <span class="form-error">All fields required.</span>
               </label>
             </div>
             <div class="medium-6 columns">
-              <label>Last name
-                <input type="text" required>
+              <label for="mce-LNAME">Last name
+                <input type="text" value="" name="LNAME" id="mce-LNAME" required>
                 <span class="form-error">All fields required.</span>
               </label>
             </div>
           </div>
           <div class="column row text-left">
-            <label>Email
-              <input type="email" required>
+            <label for="mce-EMAIL">Email
+              <input type="email" value="" name="EMAIL" id="mce-EMAIL" required>
               <span class="form-error">Valid email required.</span>
             </label>
           </div>
           <div class="column row text-left">
-            <label>What type of phone do you use?
-              <select required>
+            <label for="mce-PHONETYPE">What type of phone do you use?
+              <select name="PHONETYPE" id="mce-PHONETYPE" required>
                 <option value="">(none selected)</option>
                 <option value="iPhone">iPhone</option>
                 <option value="Android">Android</option>
@@ -44,14 +45,17 @@ layout: default
             </label>
           </div>
           <div class="row column">
-            <input type="submit" class="button" name="" value="Sign Up">
+            <div class="alert callout" id="mce-error-response" style="display: none;"></div>
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_5f3735e85240d46281743bbcc_d86d9ccf21" tabindex="-1" value="">
+            </div>
+            <input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button">
           </div>
         </div>
-        <!-- <div data-abide-error class="large-3 large-offset-9 columns validation-errors" style="display: none;">All fields required.</div> -->
       </div>
     </form>
   </div>
-
 
   <div class="reveal text-center" id="success-modal" data-reveal>
     <div class="row small-collapse medium-uncollapse">

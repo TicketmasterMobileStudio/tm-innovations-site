@@ -92,30 +92,4 @@ $(document).ready(function() {
       $content.css('margin-top', newMargin);
     }
   }
-
-  // Show success dialog on form submit
-  // TODO: Actually hook this up
-  $('.eap form[data-abide]').on('formvalid.zf.abide', function(ev, $form) {
-    $form.get(0).reset();
-    $('#success-modal').foundation('open');
-  }).on('submit', function(ev) {
-    ev.preventDefault();
-  });
-
-  // Hide all but first validation error on EAP form
-  var timeout;
-
-  $('.eap form[data-abide] input').on('invalid.zf.abide', function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(hideLabels, 10);
-  });
-
-  function hideLabels() {
-    var $errors = $('input[data-invalid] + .form-error');
-    $errors.each(function(i) {
-      if (i !== 0) {
-        $(this).removeClass('is-visible');
-      }
-    });
-  }
 });
