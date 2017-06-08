@@ -38,12 +38,13 @@ $(document).ready(function() {
   var $menu = $('#main-menu');
   var $btn = $('#menu-button');
   var sizes = ['small', 'medium'];
+  var opts = {closingTime: 300};
 
   $(window).on('changed.zf.mediaquery', function(e, newSize, oldSize) {
     if ($.inArray(newSize, sizes) !== -1 && $.inArray(oldSize, sizes) === -1) {
       $menu.foundation('destroy');
     } else if ($.inArray(newSize, sizes) === -1 && $.inArray(oldSize, sizes) !== -1) {
-      var menu = new Foundation.DropdownMenu($menu);
+      var menu = new Foundation.DropdownMenu($menu, opts);
     }
 
     if ($btn.hasClass('open')) {
@@ -70,7 +71,7 @@ $(document).ready(function() {
 
   // Add the dropdown on first load on large screens
   if (Foundation.MediaQuery.atLeast('large')) {
-    var menu = new Foundation.DropdownMenu($menu);
+    var menu = new Foundation.DropdownMenu($menu, opts);
     swapProductTitles();
   }
 
