@@ -52,6 +52,10 @@ html.is-reveal-open, html.is-reveal-open body {
   min-width: 100%; // fix layout bug when reveal is used
 }
 
+.reveal-overlay {
+  overflow-y: auto;
+}
+
 .reveal {
   top: 50vh !important;
   transform: translateY(-50%);
