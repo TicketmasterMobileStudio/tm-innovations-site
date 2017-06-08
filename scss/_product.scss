@@ -49,6 +49,20 @@ body.product {
       @include vertical-offset('medium');
     }
 
+    .inner-content {
+      li {
+        margin-bottom: 1rem;
+      }
+
+      p > .button {
+        margin: map-get($vertical-spacing, small) - 1rem 0;
+      }
+
+      > :last-child, > :last-child .button {
+        margin-bottom: 0;
+      }
+    }
+
     // Override sizing - this could use some optimizing
     // Cap h1 size at medium breakpoint
     h1 {
