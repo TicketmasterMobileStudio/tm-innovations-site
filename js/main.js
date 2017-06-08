@@ -3,26 +3,35 @@
 $(document).foundation();
 
 $(document).ready(function() {
+
   // Inject SVGs so we can change colors
   var $SVGImgs = $('.product-nav-icon, .dropdown-arrow');
+  var $responsiveSVGs = $SVGImgs.filter('.product-nav-icon');
 
   function injectCopy() {
     var $img = $(this);
-    var $copy = $img.clone();
+    var $copy = $img.clone().hide();
     var $oldSVG = $img.next('.injected-svg');
-
-    if ($oldSVG.length > 0) {
-      $oldSVG.remove();
-      $copy.show();
-    } else {
-      $img.hide();
-    }
-
     $img.after($copy);
-    SVGInjector($copy.get(0));
+
+    SVGInjector($copy.get(0), {
+      each: function(svg) {
+
+        // When the injection is done,
+        // hide any previous <svg> or <img> elements
+        if ($oldSVG.length > 0) {
+          $oldSVG.remove();
+        } else {
+          $img.hide();
+        }
+
+        // ..and show the injected copy
+        $(svg).show();
+      }
+    });
   }
 
-  $SVGImgs.on('replaced.zf.interchange', injectCopy);
+  $responsiveSVGs.on('replaced.zf.interchange', injectCopy);
   $SVGImgs.each(injectCopy);
 
   // Call responsive dropdown manually, since the builtin method breaks on resize

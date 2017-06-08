@@ -151,7 +151,7 @@
         transform: rotate(180deg);
       }
 
-      .submenu {
+      .menu {
         background: rgba($white, 0.95);
         padding: rem-calc(30 0 24);
         border: none;
@@ -161,6 +161,10 @@
         width: 100%;
         text-align: center;
         @include menu-icons(top);
+
+        &:not(.is-dropdown-submenu) {
+          display: none;
+        }
 
         .product-nav-icon {
           margin-bottom: rem-calc(8);
