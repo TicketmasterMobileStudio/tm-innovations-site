@@ -64,11 +64,15 @@
     overflow: hidden;
     background: no-repeat center;
     background-size: cover;
-    height: $panel-height;
+    height: 100vh;
     color: $white;
     @include flex;
     position: relative;
     padding: rem-calc(24 0);
+
+    @include breakpoint(medium) {
+      height: $panel-height;
+    }
 
     .product-icon {
       order: 1;

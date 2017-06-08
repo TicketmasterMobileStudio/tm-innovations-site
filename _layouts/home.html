@@ -21,7 +21,7 @@ layout: default
       </div>
     </div>
   </div>
-  <div class="more-arrow text-center" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:55;">
+  <div class="more-arrow text-center" data-magellan data-animation-duration="300" data-animation-easing="swing" data-bar-offset="55">
     <a href="#{{ firstProduct }}"><img src="{% link assets/images/ic-chevron-dark-big.svg %}" alt=""></a>
   </div>
 </section>
@@ -39,7 +39,7 @@ layout: default
   {% endcapture %}
   <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.image-interest }}" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
     <div class="product-icon" data-sticky-container>
-        <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:small">
+        <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
           <div class="sticky-content">
             {% if product.link %}
               <a href="{{ product.link }}" target="_blank">

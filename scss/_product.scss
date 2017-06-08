@@ -1,6 +1,6 @@
 // calculate padding in order to show title and 1 line of text
-@mixin vertical-offset($size) {
-  margin-top:
+@mixin vertical-offset($size, $prop: margin-top) {
+  #{$prop}:
     calc(
       100vh -
       #{
@@ -30,8 +30,14 @@ body.product {
     background-size: cover;
 
     @include breakpoint(medium down) {
+      @include vertical-offset('medium', 'height');
       &.image-interest-left { background-position: 25%; }
       &.image-interest-right { background-position: 75%; }
+    }
+
+    @include breakpoint(small only) {
+      @include vertical-offset('small', 'height');
+      position: absolute;
     }
   }
 
@@ -39,6 +45,8 @@ body.product {
     position: fixed;
     top: $topbar-height + $headband-height + rem-calc(20);
     right: rem-calc(20);
+
+    @include breakpoint(small only) { position: absolute; }
   }
 
   .content {

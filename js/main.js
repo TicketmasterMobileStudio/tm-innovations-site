@@ -94,11 +94,16 @@ $(document).ready(function() {
 
     if ($('body').is('.home')) {
       var $hero = $('#hero');
-      $hero.height($hero.height() - heightOffset);
+      var $nav = $('.nav-container');
+
+      $('.more-arrow').data('bar-offset', '-25').foundation('destroy').foundation();
+      $hero.height($hero.height() - heightOffset - $nav.height());
+
     } else if ($('body').is('.product')) {
       var $content = $('.content');
       var currentMargin = window.getComputedStyle($content.get(0)).getPropertyValue('margin-top');
       var newMargin = parseFloat(currentMargin) - heightOffset;
+
       $content.css('margin-top', newMargin);
     }
   }
