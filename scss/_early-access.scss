@@ -79,6 +79,10 @@
     margin: 0 0 rem-calc(8);
     border-radius: $global-radius;
 
+    &.hidden {
+      display: none !important;
+    }
+
     @include breakpoint(medium down) {
       &:after {
         @include horizontal-center;

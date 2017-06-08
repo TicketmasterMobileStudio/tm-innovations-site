@@ -1,14 +1,24 @@
 'use strict';
 
 $(document).ready(function() {
+  $(document).on('invalid.zf.abide', function(ev) {
 
-  // Submit EAP form
-  $(document).on('formvalid.zf.abide', function(ev, $form) {
+    // Hide all the input errors
+    $(ev.target).filter('input').next('.form-error').addClass('hidden');
+
+  }).on('forminvalid.zf.abide', function(ev) {
+
+    // Show the first input error
+    $('.form-error.is-visible').first().removeClass('hidden');
+
+  }).on('formvalid.zf.abide', function(ev, $form) {
+
+    // Submit the form if it's valid
     var $btn = $('#mc-embedded-subscribe');
     var $msg = $('#mce-error-response');
 
     $msg.hide().text('');
-    $btn.prop('disabled', true).val('Signing Up&hellip;');
+    $btn.prop('disabled', true).val('Signing Up…');
 
     $.ajax({
       type: $form.attr('method'),
@@ -30,24 +40,8 @@ $(document).ready(function() {
           $btn.prop('disabled', false).val('Sign Up');
         }
     });
+
   }).on('submit', function(ev) {
     ev.preventDefault();
   });
-
-  // Hide all but first validation error on EAP form
-  var timeout;
-
-  $('.eap form[data-abide] input').on('invalid.zf.abide', function() {
-    clearTimeout(timeout);
-    timeout = setTimeout(hideLabels, 10);
-  });
-
-  function hideLabels() {
-    var $errors = $('input[data-invalid] + .form-error');
-    $errors.each(function(i) {
-      if (i !== 0) {
-        $(this).removeClass('is-visible');
-      }
-    });
-  }
 });
