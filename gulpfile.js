@@ -149,7 +149,7 @@ gulp.task('generate-favicon', function(done) {
 		},
 		settings: {
 			compression: 5,
-			scalingAlgorithm: 'Spline',
+			scalingAlgorithm: 'Lanczos',
 			errorOnImageTooSmall: false
 		},
 		markupFile: FAVICON_DATA_FILE
