@@ -5,8 +5,9 @@ title: Early Access
 
 {% assign sorted_products = site.products | sort: 'date' | reverse %}
 {% assign image = sorted_products.first.image | prepend: 'assets/images/' | relative_url %}
+{% assign image-interest = sorted_products.first.image-interest %}
 
-<div class="eap" style="background-image:url({{ image }})">
+<div class="eap image-interest-{{ image-interest }}" style="background-image:url({{ image }})">
   <div class="content text-center">
     <form action="//ticketmaster.us15.list-manage.com/subscribe/post-json?u=5f3735e85240d46281743bbcc&amp;id=d86d9ccf21&amp;c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" data-abide novalidate>
       <div class="row small-collapse medium-uncollapse">
