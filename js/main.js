@@ -76,35 +76,51 @@ $(document).ready(function() {
   }
 
   // Set the panel height on mobile screens to account for collapsing browser chrome
+  // TODO: Figure out how to get viewport.max accurately on iOS Chrome
   if (Foundation.MediaQuery.current == 'small') {
 
     // Adapted from https://gist.github.com/scottjehl/2051999
-    function viewportHeight() {
+    var viewport = (function() {
+
     	var test = document.createElement('div');
     	test.style.height = '100vh';
     	document.documentElement.insertBefore(test, document.documentElement.firstChild);
 
-    	var height = test.offsetHeight;
+    	var cssHeight = test.offsetHeight;
     	document.documentElement.removeChild(test);
 
-    	return height;
-    }
+      var innerHeight = window.innerHeight;
 
-    var heightOffset = viewportHeight() - window.innerHeight;
+    	return {
+        min: Math.min(cssHeight, innerHeight),
+        max: Math.max(cssHeight, innerHeight)
+      };
+    })();
+
+    var heightOffset = viewport.max - viewport.min;
 
     if ($('body').is('.home')) {
-      var $hero = $('#hero');
-      var $nav = $('.nav-container');
+      var navHeight = $('.nav-container').height();
 
-      $('.more-arrow').data('bar-offset', '-25').foundation('destroy').foundation();
-      $hero.height($hero.height() - heightOffset - $nav.height());
+      $('#hero').css('height', viewport.min - navHeight);
+      $('article').css('height', viewport.max);
 
     } else if ($('body').is('.product')) {
       var $content = $('.content');
+      var $bg = $('.background');
       var currentMargin = window.getComputedStyle($content.get(0)).getPropertyValue('margin-top');
-      var newMargin = parseFloat(currentMargin) - heightOffset;
+      var newOffset = parseFloat(currentMargin) - heightOffset;
 
-      $content.css('margin-top', newMargin);
+      $content.css('margin-top', newOffset);
+      $bg.css('height', newOffset)
     }
   }
+
+  // init more arrow
+  var options = {
+   barOffset: Foundation.MediaQuery.current == 'small' ? -25 : 55,
+   animationDuration: 300,
+   animationEasing: 'swing'
+  }
+  var moreArrow = new Foundation.Magellan($('.more-arrow'), options);
 });
