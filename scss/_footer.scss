@@ -1,7 +1,7 @@
 footer {
-  padding: rem-calc(36 20);
-  color: $white;
   background-color: $primary-color;
+  color: $white;
+  padding: rem-calc(36 20);
 
   .footer-logo {
     margin-bottom: rem-calc(16);
@@ -13,12 +13,14 @@ footer {
     margin-bottom: rem-calc(24);
   }
 
-  .menu.social-icons li {
-    margin-right: rem-calc(20);
+  .social-icons {
+    li {
+      margin-right: rem-calc(20);
 
-    &:last-child { margin-right: 0; }
+      &:last-child { margin-right: 0; }
 
-    img { margin-right: 0; }
+      img { margin-right: 0; }
+    }
   }
 
   @include breakpoint(medium up) {
@@ -26,13 +28,15 @@ footer {
   }
 
   @include breakpoint(large up) {
-    p, .social-icons {
+    p,
+    .social-icons {
       display: inline-block;
     }
 
     .social-icons { vertical-align: middle; }
 
-    .footer-logo, p {
+    .footer-logo,
+    p {
       margin-bottom: 0;
       margin-right: rem-calc(30);
     }

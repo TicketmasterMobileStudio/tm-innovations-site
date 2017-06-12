@@ -2,31 +2,31 @@
   background: $primary-color;
 
   .hero {
+    background-image: linear-gradient($primary-color, $primary-color-dark);
     position: relative;
     width: 100%; // fixes weird layout bug
-    background-image: linear-gradient($primary-color, #2a7cc7);
 
     h1 {
       font-weight: $global-weight-normal;
     }
 
     .more-arrow {
-      position: absolute;
-      left: 0;
       bottom: rem-calc(36);
+      left: 0;
+      position: absolute;
       width: 100%;
     }
   }
 
   .pager {
+    display: flex;
+    height: $panel-height;
+    pointer-events: none;
     position: fixed;
-    z-index: 1;
+    right: map-get($side-margins, medium) - rem-calc(8);
     top: $header-height;
     width: rem-calc(26);
-    right: map-get($side-margins, medium) - rem-calc(8);
-    height: $panel-height;
-    display: flex;
-    pointer-events: none;
+    z-index: 1;
 
     @include breakpoint(large up) {
       right: map-get($side-margins, large) - rem-calc(8);
@@ -48,40 +48,43 @@
     }
 
     i {
-      margin: 0;
-      width: rem-calc(10);
-      height: rem-calc(10);
       border: solid rem-calc(1.5) $white;
       border-radius: rem-calc(5);
+      height: rem-calc(10);
+      margin: 0;
+      width: rem-calc(10);
     }
 
-    .active i {
-      background: $white;
+    .active {
+      i { background: $white; }
     }
   }
 
-  section, article {
-    overflow: hidden;
+  section,
+  article {
+    @include flex;
     background: no-repeat center;
     background-size: cover;
-    height: $panel-height;
     color: $white;
-    @include flex;
-    position: relative;
+    height: $panel-height;
+    overflow: hidden;
     padding: rem-calc(24 0);
+    position: relative;
 
     @include breakpoint(medium) {
       height: $panel-height;
     }
 
     .product-icon {
-      order: 1;
-      margin-top: rem-calc(-24);
-      @include breakpoint(large) { margin-top: rem-calc(-36); }
       color: $white;
+      margin-top: rem-calc(-24);
+      order: 1;
+
+      @include breakpoint(large) { margin-top: rem-calc(-36); }
 
       .sticky-content {
         @include side-margins(padding-top padding-right padding-bottom);
+
         @each $size, $margin in $side-margins {
           @include breakpoint($size) { margin-left: -(rem-calc(44) + $margin); }
         }
@@ -93,18 +96,19 @@
 
 
     h2 {
+      margin-bottom: rem-calc(24);
+
       @each $size, $headers in $header-styles {
         @include breakpoint($size) {
           font-size: rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size'));
           line-height: map-deep-get($header-styles, $size, 'h1', 'letter-spacing');
         }
       }
-      margin-bottom: rem-calc(24);
     }
 
     .content {
-      width: 100%;
       @include flex-align-self(middle);
+      width: 100%;
     }
 
     .button-group {
@@ -132,13 +136,24 @@
   @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
     .image-interest-left { background-position: 25%; }
     .image-interest-right { background-position: 75%; }
-    article .content { @include flex-align-self(bottom); }
-    .content .medium-6.columns { @include grid-column-offset(3); }
+
+    article {
+      .content { @include flex-align-self(bottom); }
+    }
+
+    .content {
+      .columns {
+        .medium-6 { @include grid-column-offset(3); }
+      }
+    }
   }
 
   @include breakpoint(small only) {
     .image-interest-left { background-position: 25%; }
     .image-interest-right { background-position: 75%; }
-    article .content { @include flex-align-self(bottom); }
+
+    article {
+      .content { @include flex-align-self(bottom); }
+    }
   }
 }

@@ -4,15 +4,14 @@
 }
 
 .top-bar {
-  width: 100%;
+  @include side-margins;
   height: $header-height;
   padding-top: $headband-height;
-  transition: box-shadow 0.2s;
-
-  @include side-margins;
+  transition: box-shadow .2s;
+  width: 100%;
 
   &.is-stuck {
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px 0 transparentize($black, .5);
   }
 
   // Gradient divs, workaround for chrome bug
@@ -22,10 +21,10 @@
   .headband {
     display: flex;
     flex-direction: row;
-    position: absolute;
-    top: 0;
     left: 0;
+    position: absolute;
     right: 0;
+    top: 0;
 
     div {
       flex: 1;
@@ -40,31 +39,31 @@
     }
   }
 
-  .custom-menu-icon {
-    margin-top: rem-calc(24);
-    background-image: url(../images/ic-menu.svg);
-    outline: none;
+  .menu-button {
+    background-image: url('../images/ic-menu.svg');
     height: rem-calc(24);
+    margin-top: rem-calc(24);
+    outline: none;
     width: rem-calc(24);
 
     &.open {
-      background-image: url(../images/ic-close.svg);
+      background-image: url('../images/ic-close.svg');
     }
   }
 
-  #main-menu {
+  .main-menu {
     .product-nav-icon {
       circle { stroke: currentColor; }
       path { fill: currentColor; }
     }
 
     a {
-      padding: 0 rem-calc(15);
       color: $medium-gray;
       font-weight: bold;
-      letter-spacing: rem-calc(0.8);
+      letter-spacing: rem-calc(.8);
+      padding: 0 rem-calc(15);
       text-transform: uppercase;
-      transition: color 0.2s;
+      transition: color .2s;
 
       &:hover {
         color: $primary-color;
@@ -72,8 +71,8 @@
     }
 
     .active > a {
-      color: $primary-color;
       background-color: inherit;
+      color: $primary-color;
 
       &:hover {
         color: $primary-color;
@@ -81,18 +80,18 @@
     }
 
     @include breakpoint(medium down) {
-      background: rgba($white, 0.95);
-      position: absolute;
-      top: $header-height;
-      left: 0;
-      right: 0;
-      overflow: auto;
+      background: transparentize($white, .05);
       height: $panel-height;
+      left: 0;
+      overflow: auto;
+      position: absolute;
+      right: 0;
+      top: $header-height;
 
       a {
-        padding: 0 map-get($side-margins, small);
-        line-height: rem-calc(48);
         height: rem-calc(48);
+        line-height: rem-calc(48);
+        padding: 0 map-get($side-margins, small);
       }
 
       > .active > a {
@@ -108,15 +107,15 @@
         }
 
         .product-nav-icon {
-          margin: 0 0 0 rem-calc(16);
           @include flex-align-self(middle);
+          margin: 0 0 0 rem-calc(16);
         }
       }
     }
 
     @include breakpoint(medium only) {
-      min-width: rem-calc(320);
       left: auto;
+      min-width: rem-calc(320);
 
       a {
         padding: 0 map-get($side-margins, medium);
@@ -135,71 +134,64 @@
       }
 
       > li > a {
-        line-height: $topbar-height;
         height: $topbar-height;
+        line-height: $topbar-height;
       }
 
       .dropdown-arrow {
+        margin: 0 0 0 rem-calc(8);
         position: relative;
         top: rem-calc(-2);
-        margin: 0 0 0 rem-calc(8);
-        transition: transform 0.1s;
+        transition: transform .1s;
 
         path { fill: currentColor; }
       }
 
-      li.is-active .dropdown-arrow {
-        transform: rotate(180deg);
+      .is-active {
+        .dropdown-arrow { transform: rotate(180deg); }
       }
 
       .menu {
-        background: rgba($white, 0.95);
-        padding: rem-calc(30 0 24);
-        border: none;
-        position: fixed;
+        @include menu-icons(top);
+        background: transparentize($white, .05);
+        border: 0;
         left: 0;
+        padding: rem-calc(30 0 24);
+        position: fixed;
+        text-align: center;
         top: $header-height;
         width: 100%;
-        text-align: center;
-        @include menu-icons(top);
 
-        &:not(.is-dropdown-submenu) {
-          display: none;
-        }
-
-        .product-nav-icon {
-          margin-bottom: rem-calc(8);
-        }
-
-        li {
-          width: rem-calc(116);
-        }
-
-        a {
-          padding: 0;
-        }
+        &:not(.is-dropdown-submenu) { display: none; }
+        .product-nav-icon { margin-bottom: rem-calc(8); }
+        li { width: rem-calc(116); }
+        a { padding: 0; }
       }
     }
   }
 }
 
 // Avoid Foundation cascade issue
-.is-dropdown-submenu.js-dropdown-active {
-  display: flex;
-  justify-content: center;
+.is-dropdown-submenu {
+  &.js-dropdown-active {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 // Avoid FOUC
 .no-js {
   @include breakpoint(medium down) {
-    #main-menu {
+    .main-menu {
       display: none;
     }
   }
 
   @include breakpoint(large up) {
-    #menu-button, #main-menu .menu {
-      display: none;
+    .menu-button { display: none; }
+
+    .main-menu {
+      .menu { display: none; }
     }
   }
 }

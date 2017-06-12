@@ -3,6 +3,7 @@ $topbar-height: rem-calc(72);
 $headband-height: rem-calc(8);
 $header-height: $topbar-height + $headband-height;
 $panel-height: calc(100vh - #{$header-height});
+$primary-color-dark: #2a7cc7; // for gradient endpoint
 
 // Responsive spacing for top
 $vertical-spacing: (
@@ -37,9 +38,9 @@ $side-margins: (
 // Style overrides
 .button {
   font-family: inherit;
-  text-transform: uppercase;
   font-weight: $global-weight-bold;
-  letter-spacing: rem-calc(0.8);
+  letter-spacing: rem-calc(.8);
+  text-transform: uppercase;
 
   @include breakpoint(medium up) {
     padding-left: rem-calc(24);
@@ -47,9 +48,14 @@ $side-margins: (
   }
 }
 
-html.is-reveal-open, html.is-reveal-open body {
-  position: static; // don't scroll page when reveal modal is open
-  min-width: 100%; // fix layout bug when reveal is used
+html {
+  &.is-reveal-open {
+    &,
+    body {
+      min-width: 100%; // fix layout bug when reveal is used
+      position: static; // don't scroll page when reveal modal is open
+    }
+  }
 }
 
 .reveal-overlay {
@@ -57,7 +63,7 @@ html.is-reveal-open, html.is-reveal-open body {
 }
 
 .reveal {
-  top: 50vh !important;
+  top: 50vh;
   transform: translateY(-50%);
 
   .button {
@@ -71,16 +77,16 @@ html.is-reveal-open, html.is-reveal-open body {
 
   @include breakpoint(small only) {
     height: auto;
-    min-height: auto;
     left: auto;
     margin-left: auto;
+    min-height: auto;
     width: calc(100vw - #{map-get($side-margins, small)} * 2);
   }
 
   .content {
-    position: relative;
     background: $white;
     padding: rem-calc(36 20);
+    position: relative;
 
     @include breakpoint(medium up) {
       padding: rem-calc(60);

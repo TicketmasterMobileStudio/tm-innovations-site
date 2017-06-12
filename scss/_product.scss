@@ -1,120 +1,120 @@
 // calculate padding in order to show title and 1 line of text
 @mixin vertical-offset($size, $prop: margin-top) {
-  #{$prop}:
-    calc(
-      100vh -
-      #{
-        $topbar-height
-        + $headband-height
-        + map-get($vertical-spacing, $size)
-        + rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size')) * map-deep-get($header-styles, $size, 'h1', 'line-height')
-        + $header-margin-bottom
-        + $paragraph-lineheight
-      }
-    );
+  #{$prop}: calc(100vh - #{
+    $topbar-height
+    + $headband-height
+    + map-get($vertical-spacing, $size)
+    + rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size')) * map-deep-get($header-styles, $size, 'h1', 'line-height')
+    + $header-margin-bottom
+    + $paragraph-lineheight
+  });
 }
 
-body.product {
+body {
+  &.product {
 
-  // TODO: Get rid of this presentational div, yuck
-  .background {
-    height: calc(100vh - #{$header-height});
-    width: 100vw;
-    position: fixed;
-    z-index: -1;
-    top: $header-height;
-    left: 0;
-    background-image: linear-gradient($primary-color, #2a7cc7);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    // TODO: Get rid of this presentational div, yuck
+    .background {
+      background-image: linear-gradient($primary-color, $primary-color-dark);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: calc(100vh - #{$header-height});
+      left: 0;
+      position: fixed;
+      top: $header-height;
+      width: 100vw;
+      z-index: -1;
 
-    @include breakpoint(medium down) {
-      @include vertical-offset('medium', 'height');
-      &.image-interest-left { background-position: 25%; }
-      &.image-interest-right { background-position: 75%; }
-    }
+      @include breakpoint(medium down) {
+        @include vertical-offset('medium', 'height');
 
-    @include breakpoint(small only) {
-      @include vertical-offset('small', 'height');
-      position: absolute;
-    }
-  }
-
-  .product-icon {
-    position: fixed;
-    top: $topbar-height + $headband-height + rem-calc(20);
-    right: rem-calc(20);
-
-    @include breakpoint(small only) { position: absolute; }
-  }
-
-  .content {
-    position: relative; // fix z-index
-    @include vertical-offset('small');
-
-    @include breakpoint(medium up) {
-      @include vertical-offset('medium');
-    }
-
-    .inner-content {
-      li {
-        margin-bottom: 1rem;
+        &.image-interest-left { background-position: 25%; }
+        &.image-interest-right { background-position: 75%; }
       }
 
-      p > .button {
-        margin: map-get($vertical-spacing, small) - 1rem 0;
-      }
-
-      > :last-child, > :last-child .button {
-        margin-bottom: 0;
+      @include breakpoint(small only) {
+        @include vertical-offset('small', 'height');
+        position: absolute;
       }
     }
 
-    // Override sizing - this could use some optimizing
-    // Cap h1 size at medium breakpoint
-    h1 {
-      @include breakpoint(large up) {
-        font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
-        line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
-      }
+    .product-icon {
+      position: fixed;
+      right: rem-calc(20);
+      top: $topbar-height + $headband-height + rem-calc(20);
+
+      @include breakpoint(small only) { position: absolute; }
     }
 
-    // Bring h2 size up to match h1 and cap at medium breakpoint
-    h2 {
-      font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
-      line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
+    .content {
+      @include vertical-offset('small');
+      position: relative; // fix z-index
 
       @include breakpoint(medium up) {
-        font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
-        line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
+        @include vertical-offset('medium');
+      }
+
+      .inner-content {
+        li { margin-bottom: 1rem; }
+
+        p > .button {
+          margin: map-get($vertical-spacing, small) - 1rem 0;
+        }
+
+        > :last-child {
+          &,
+          .button {
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      // Override sizing - this could use some optimizing
+      // Cap h1 size at medium breakpoint
+      h1 {
+        @include breakpoint(large up) {
+          font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
+          line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
+        }
+      }
+
+      // Bring h2 size up to match h1 and cap at medium breakpoint
+      h2 {
+        font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
+        line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
+
+        @include breakpoint(medium up) {
+          font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
+          line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
+        }
       }
     }
-  }
 
-  // TODO: Simplify this insanity
-  article {
-    background-color: $white;
+    // TODO: Simplify this insanity
+    article {
+      background-color: $white;
 
-    .inner-content-container {
-      @include grid-row;
+      .inner-content-container {
+        @include grid-row;
 
-      @include breakpoint(large up) {
-        @include grid-row(null, nest);
-      }
-    }
-
-    .inner-content {
-      padding: map-get($vertical-spacing, small) map-get($side-margins, small);
-
-      @include breakpoint(medium up) {
-        padding: map-get($vertical-spacing, medium) 0;
-        @include grid-column(8);
-        @include grid-column-position(center);
+        @include breakpoint(large up) {
+          @include grid-row(null, nest);
+        }
       }
 
-      @include breakpoint(large up) {
-        @include grid-column-size(6 of 10);
+      .inner-content {
+        padding: map-get($vertical-spacing, small) map-get($side-margins, small);
+
+        @include breakpoint(medium up) {
+          @include grid-column(8);
+          @include grid-column-position(center);
+          padding: map-get($vertical-spacing, medium) 0;
+        }
+
+        @include breakpoint(large up) {
+          @include grid-column-size(6 of 10);
+        }
       }
     }
   }

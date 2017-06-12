@@ -1,31 +1,31 @@
 .eap {
-  min-height: $panel-height;
-  width: 100%;
   background: no-repeat center;
   background-size: cover;
-  display: flex;
   color: $white;
+  display: flex;
+  min-height: $panel-height;
   position: relative;
+  width: 100%;
 
   @include breakpoint(medium down) {
     &.image-interest-left { background-position: 25%; }
     &.image-interest-right { background-position: 75%; }
   }
 
-  &:before {
+  &::before {
+    background-image: linear-gradient($primary-color, $primary-color-dark);
     content: '';
+    height: 100%;
+    opacity: .9;
     position: absolute;
     width: 100%;
-    height: 100%;
-    background-image: linear-gradient($primary-color, #2a7cc7);
-    opacity: 0.9;
   }
 
   .content {
+    @include flex-align-self(middle);
     padding: map-get($vertical-spacing, small) map-get($side-margins, small);
     position: relative;
     width: 100%;
-    @include flex-align-self(middle);
 
     @include breakpoint(medium up) {
       padding: map-get($vertical-spacing, medium) 0;
@@ -41,58 +41,59 @@
   }
 
   label {
+    @include clearfix;
     color: $white;
     position: relative;
-    @include clearfix;
   }
 
-  select, input:not([type=button], [type=submit]) {
-    line-height: inherit;
-    margin-top: rem-calc(8);
-    height: rem-calc(48);
-    padding-left: rem-calc(16);
-    padding-right: rem-calc(16);
+  select,
+  input {
+    &:not([type='button'], [type='submit']) {
+      height: rem-calc(48);
+      line-height: inherit;
+      margin-top: rem-calc(8);
+      padding-left: rem-calc(16);
+      padding-right: rem-calc(16);
+    }
   }
 
   select {
-    background-image: url(../images/ic-chevron-light-small.svg);
-    background-size: 10px 7px;
+    background-image: url('../images/ic-chevron-light-small.svg');
     background-position: right center;
+    background-size: 10px 7px;
   }
 
   .button {
     @include button-style($white, auto, $primary-color);
+    line-height: 1;
     margin: (map-get($vertical-spacing, small) - rem-calc(24)) 0 0;
     @include breakpoint(medium) { margin-top: map-get($vertical-spacing, medium) - rem-calc(24); }
-    line-height: 1;
   }
 
   // validation
-  .is-invalid-input:not(:focus) {
-    box-shadow: 0 0 0 2px $alert-color;
+  .is-invalid-input {
+    &:not(:focus) {
+      box-shadow: 0 0 0 2px $alert-color;
+    }
   }
 
   .form-error {
-    width: 100%;
     @include horizontal-center;
+    background: $alert-color;
+    border-radius: $global-radius;
     bottom: 100%;
+    color: $white;
+    margin: 0 0 rem-calc(8);
+    padding: rem-calc(12 16);
     text-align: center;
     white-space: nowrap;
-    background: $alert-color;
-    color: $white;
-    padding: rem-calc(12 16);
-    margin: 0 0 rem-calc(8);
-    border-radius: $global-radius;
-
-    &.hidden {
-      display: none !important;
-    }
+    width: 100%;
 
     @include breakpoint(medium down) {
-      &:after {
+      &::after {
         @include horizontal-center;
-        top: 100%;
         @include css-triangle(rem-calc(8), $alert-color, down);
+        top: 100%;
       }
     }
 
@@ -101,36 +102,43 @@
     }
 
     @include breakpoint(large) {
-      text-align: left;
-      width: calc(50% - #{map-get($grid-column-gutter, medium)} / 2);
-      transform: none;
       bottom: rem-calc(24);
-      margin-bottom: 0;
       left: calc(100% + #{map-get($grid-column-gutter, small)});
+      margin-bottom: 0;
+      text-align: left;
+      transform: none;
+      width: calc(50% - #{map-get($grid-column-gutter, medium)} / 2);
 
-      &:after {
+      &::after {
         @include vertical-center;
-        right: 100%;
         @include css-triangle(rem-calc(8), $alert-color, left);
+        right: 100%;
       }
     }
   }
 
-  .medium-6.columns {
-    @include breakpoint(large) {
-      &:first-child .form-error {
-        left: calc(200% + #{map-get($grid-column-gutter, small)} * 2);
-      }
-      .form-error {
-        width: 100%;
+  .medium-6 {
+    &.columns {
+      @include breakpoint(large) {
+        &:first-child {
+          .form-error {
+            left: calc(200% + #{map-get($grid-column-gutter, small)} * 2);
+          }
+        }
+
+        .form-error {
+          width: 100%;
+        }
       }
     }
   }
 
   // fix foundation specificity bug
-  .small-collapse .row {
-    @include breakpoint(medium up) {
-      @include grid-row-nest;
+  .small-collapse {
+    .row {
+      @include breakpoint(medium up) {
+        @include grid-row-nest;
+      }
     }
   }
 }

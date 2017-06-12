@@ -21,7 +21,16 @@ var fs = require('fs');
 gulp.task('sass', (cb) => {
   pump([
       gulp.src('scss/**/*.scss'),
-      sassLint(),
+      sassLint({
+        rules: {
+          'no-duplicate-properties': [
+            1,
+            {
+              'exclude': 'src'
+            }
+          ]
+        }
+      }),
       sassLint.format(),
       sassLint.failOnError(),
       sourcemaps.init(),
