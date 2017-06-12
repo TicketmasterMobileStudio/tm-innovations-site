@@ -6,6 +6,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
 var sassLint = require('gulp-sass-lint');
 var uglify = require('gulp-uglify');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
 var pump = require('pump');
@@ -51,6 +53,8 @@ gulp.task('vendor-js', (cb) => {
 gulp.task('js', (cb) => {
   pump([
       gulp.src('js/*.js'),
+      jshint(),
+      jshint.reporter(stylish),
       sourcemaps.init(),
         uglify(),
         rename({suffix: '.min'}),
