@@ -20,7 +20,7 @@
           <img class="product-nav-icon" data-interchange="
               [{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}, small],
               [{{ icon | prepend: 'assets/images/' | relative_url }}, large]
-            " alt="">
+            " src="{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}" alt="">
           <span data-title="{{ product.title }}" data-shorttitle="{{ product.short-title }}">{{ product.title }}</span>
         </a>
       </li>

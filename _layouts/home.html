@@ -39,16 +39,15 @@ layout: default
   {% endcapture %}
   <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.image-interest }}" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
     <div class="product-icon" data-sticky-container>
-        <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
-          <div class="sticky-content">
-            {% if product.link %}
-              <a href="{{ product.link }}" target="_blank">
-                <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-              </a>
-            {% else %}
+      <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
+        <div class="sticky-content">
+          {% if product.link %}
+            <a href="{{ product.link }}" target="_blank">
               <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-            {% endif %}
-          </div>
+            </a>
+          {% else %}
+            <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
+          {% endif %}
         </div>
       </div>
     </div>
