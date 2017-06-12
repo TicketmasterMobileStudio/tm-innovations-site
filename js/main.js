@@ -1,5 +1,26 @@
 $(document).foundation();
 
+// Get the viewport, used for height-related layouts
+// Adapted from https://gist.github.com/scottjehl/2051999
+// TODO: Figure out how to get viewport.max accurately on iOS Chrome
+var viewport = (function() {
+  'use strict';
+
+  var test = document.createElement('div');
+  test.style.height = '100vh';
+  document.documentElement.insertBefore(test, document.documentElement.firstChild);
+
+  var cssHeight = test.offsetHeight;
+  document.documentElement.removeChild(test);
+
+  var innerHeight = window.innerHeight;
+
+  return {
+    min: Math.min(cssHeight, innerHeight),
+    max: Math.max(cssHeight, innerHeight)
+  };
+})();
+
 $(document).ready(function() {
   'use strict';
 
@@ -73,53 +94,4 @@ $(document).ready(function() {
     var menu = new Foundation.DropdownMenu($menu, opts);
     swapProductTitles();
   }
-
-  // Set the panel height on mobile screens to account for collapsing browser chrome
-  // TODO: Figure out how to get viewport.max accurately on iOS Chrome
-  if (Foundation.MediaQuery.current == 'small') {
-
-    // Adapted from https://gist.github.com/scottjehl/2051999
-    var viewport = (function() {
-
-    	var test = document.createElement('div');
-    	test.style.height = '100vh';
-    	document.documentElement.insertBefore(test, document.documentElement.firstChild);
-
-    	var cssHeight = test.offsetHeight;
-    	document.documentElement.removeChild(test);
-
-      var innerHeight = window.innerHeight;
-
-    	return {
-        min: Math.min(cssHeight, innerHeight),
-        max: Math.max(cssHeight, innerHeight)
-      };
-    })();
-
-    var heightOffset = viewport.max - viewport.min;
-
-    if ($('body').is('.home')) {
-      var navHeight = $('.nav-container').height();
-
-      $('#hero').css('height', viewport.min - navHeight);
-      $('article').css('height', viewport.max);
-
-    } else if ($('body').is('.product')) {
-      var $content = $('.content');
-      var $bg = $('.background');
-      var currentMargin = window.getComputedStyle($content.get(0)).getPropertyValue('margin-top');
-      var newOffset = parseFloat(currentMargin) - heightOffset;
-
-      $content.css('margin-top', newOffset);
-      $bg.css('height', newOffset);
-    }
-  }
-
-  // init more arrow
-  var options = {
-   barOffset: Foundation.MediaQuery.current == 'small' ? -25 : 55,
-   animationDuration: 300,
-   animationEasing: 'swing'
- };
-  var moreArrow = new Foundation.Magellan($('.more-arrow'), options);
 });

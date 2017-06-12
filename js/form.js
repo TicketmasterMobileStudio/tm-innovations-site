@@ -1,16 +1,15 @@
-
 $(document).ready(function() {
   'use strict';
 
   $(document).on('invalid.zf.abide', function(ev) {
 
     // Hide all the input errors
-    $(ev.target).filter('input').next('.form-error').addClass('hidden');
+    $(ev.target).filter('input').next('.form-error').css('visibility', 'hidden');
 
   }).on('forminvalid.zf.abide', function(ev) {
 
     // Show the first input error
-    $('.form-error.is-visible').first().removeClass('hidden');
+    $('.form-error.is-visible').first().css('visibility', '');
 
   }).on('formvalid.zf.abide', function(ev, $form) {
 
