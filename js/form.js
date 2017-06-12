@@ -1,6 +1,7 @@
-'use strict';
 
 $(document).ready(function() {
+  'use strict';
+
   $(document).on('invalid.zf.abide', function(ev) {
 
     // Hide all the input errors

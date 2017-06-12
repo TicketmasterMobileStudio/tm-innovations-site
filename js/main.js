@@ -1,14 +1,13 @@
-'use strict';
-
 $(document).foundation();
 
 $(document).ready(function() {
+  'use strict';
 
   // Inject SVGs so we can change colors
   var $SVGImgs = $('.product-nav-icon, .dropdown-arrow');
   var $responsiveSVGs = $SVGImgs.filter('.product-nav-icon');
 
-  function injectCopy() {
+  var injectCopy = function() {
     var $img = $(this);
     var $copy = $img.clone().hide();
     var $oldSVG = $img.next('.injected-svg');
@@ -29,7 +28,7 @@ $(document).ready(function() {
         $(svg).show();
       }
     });
-  }
+  };
 
   $responsiveSVGs.on('replaced.zf.interchange', injectCopy);
   $SVGImgs.each(injectCopy);
@@ -112,7 +111,7 @@ $(document).ready(function() {
       var newOffset = parseFloat(currentMargin) - heightOffset;
 
       $content.css('margin-top', newOffset);
-      $bg.css('height', newOffset)
+      $bg.css('height', newOffset);
     }
   }
 
@@ -121,6 +120,6 @@ $(document).ready(function() {
    barOffset: Foundation.MediaQuery.current == 'small' ? -25 : 55,
    animationDuration: 300,
    animationEasing: 'swing'
-  }
+ };
   var moreArrow = new Foundation.Magellan($('.more-arrow'), options);
 });
