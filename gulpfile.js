@@ -15,6 +15,7 @@ var browserSync = require('browser-sync').create();
 var child = require('child_process');
 var gutil = require('gulp-util');
 var realFavicon = require ('gulp-real-favicon');
+var validator = require('gulp-html');
 var fs = require('fs');
 
 
@@ -74,6 +75,17 @@ gulp.task('js', (cb) => {
   );
 });
 
+gulp.task('html', (cb) => {
+  pump([
+      gulp.src('_site/**/*.html'),
+      validator({
+        format: 'text'
+      })
+    ],
+    cb
+  );
+});
+
 gulp.task('jekyll', () => {
   const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'build',
     '--watch',
@@ -91,7 +103,7 @@ gulp.task('jekyll', () => {
   jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll'], () => {
+gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll', 'html'], () => {
   browserSync.init({
     files: ['_site/**'],
     port: 4000,
@@ -102,9 +114,10 @@ gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll'], () => {
 
   gulp.watch(['scss/**/*.scss'], ['sass']);
   gulp.watch(['js/*.js'], ['js']);
+  gulp.watch(['_site/**/*.html'], ['html']);
 });
 
-gulp.task('default', ['sass', 'vendor-js', 'js']);
+gulp.task('default', ['sass', 'vendor-js', 'js', 'html']);
 
 // File where the favicon markups are stored
 var FAVICON_DATA_FILE = 'faviconData.json';
