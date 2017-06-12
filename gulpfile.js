@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var cleanCSS = require('gulp-clean-css');
+var sassLint = require('gulp-sass-lint');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var sourcemaps = require('gulp-sourcemaps');
@@ -17,7 +18,10 @@ var fs = require('fs');
 
 gulp.task('sass', (cb) => {
   pump([
-      gulp.src('scss/main.scss'),
+      gulp.src('scss/**/*.scss'),
+      sassLint(),
+      sassLint.format(),
+      sassLint.failOnError(),
       sourcemaps.init(),
         sass({includePaths: ['bower_components/foundation-sites/scss']}).on('error', sass.logError),
         autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']}),
