@@ -160,7 +160,7 @@ gulp.task('generate-favicon', function(done) {
 				pictureAspect: 'noChange',
 				themeColor: '#009cde',
 				manifest: {
-					name: 'Ticketmaster Innovations',
+					name: 'Ticketmaster Innovation',
 					display: 'browser',
 					orientation: 'notSet',
 					onConflict: 'override',

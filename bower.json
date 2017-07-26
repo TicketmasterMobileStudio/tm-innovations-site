@@ -1,9 +1,9 @@
 {
-  "name": "tm-innovations-site",
+  "name": "tm-innovation.github.io",
   "authors": [
     "Darwin Campa <darwin.campa@ticketmaster.com>"
   ],
-  "description": "Ticketmaster Innovations website",
+  "description": "Ticketmaster Innovation website",
   "main": "index.html",
   "license": "UNLICENSED",
   "homepage": "",

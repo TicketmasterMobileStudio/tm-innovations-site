@@ -1,6 +1,6 @@
-# Ticketmaster Innovations website
+# Ticketmaster Innovation website
 
-This is a GitHub Pages repo for the Ticketmaster Innovations website.
+This is a GitHub Pages repo for the Ticketmaster Innovation website.
 
 ## Requirements
 

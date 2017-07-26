@@ -1,7 +1,7 @@
 {
-  "name": "tm-innovations-site",
+  "name": "tm-innovation.github.io",
   "version": "1.0.0",
-  "description": "Ticketmaster Innovations website",
+  "description": "Ticketmaster Innovation website",
   "main": "gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.18.12",
