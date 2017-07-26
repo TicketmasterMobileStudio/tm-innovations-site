@@ -1,5 +1,4 @@
 {% capture home_url %}{% link index.html %}{% endcapture %}
-{% capture eap_url %}{% link early-access.html %}{% endcapture %}
 {% assign products = site.products | sort: 'date' | reverse %}
 
 <li class="is-dropdown-submenu-parent{% if page.url == home_url or page.layout == 'product' %} active{% endif %}">
@@ -27,6 +26,4 @@
     {% endfor %}
   </ul>
 </li>
-<li{% if eap_url == page.url %} class="active"{% endif %}><a href="{{ eap_url }}">Early Access</a></li>
-<li><a href="http://insider.ticketmaster.com/tag/innovation" target="_blank">Insights</a></li>
 <li><a href="http://www.ticketmaster.com" target="_blank">Ticketmaster</a></li>
