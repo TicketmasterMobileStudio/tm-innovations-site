@@ -94,4 +94,9 @@ $(document).ready(function() {
     var menu = new Foundation.DropdownMenu($menu, opts);
     swapProductTitles();
   }
+
+  // Don't close dropdown when unreleased product is clicked
+  $('.unreleased > a').click(function(e) {
+    e.stopPropagation();
+  });
 });

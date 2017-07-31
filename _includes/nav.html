@@ -7,15 +7,19 @@
   </a>
   <ul class="vertical large-horizontal menu">
     {% for product in products %}
+      {% assign class = "" %}
       {% if product.url == page.url %}
-        {% assign active = true %}
+        {% assign class = class | append: "active" %}
         {% assign icon = product.icon %}
       {% else %}
         {% assign active = false %}
         {% assign icon = product.nav-icon %}
       {% endif %}
-      <li{% if active %} class="active"{% endif %}>
-        <a href="{{ product.url }}">
+      {% if product.unreleased %}
+        {% assign class = class | append: " unreleased" %}
+      {% endif %}
+      <li class="{{ class }}">
+        <a{% unless product.unreleased %} href="{{ product.url }}"{% endunless %}>
           <img class="product-nav-icon" data-interchange="
               [{{ product.nav-icon-small | prepend: 'assets/images/' | relative_url }}, small],
               [{{ icon | prepend: 'assets/images/' | relative_url }}, large]

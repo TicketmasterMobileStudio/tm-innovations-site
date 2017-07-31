@@ -90,6 +90,11 @@
         }
       }
 
+      .disabled {
+        cursor: not-allowed;
+        opacity: .5;
+      }
+
       circle { stroke: currentColor; }
       path { fill: currentColor; }
     }
@@ -124,6 +129,11 @@
 
       &.secondary {
         @include button-style($white, auto, $primary-color);
+      }
+
+      &.disabled {
+        background-color: $medium-gray;
+        opacity: .75;
       }
     }
 
