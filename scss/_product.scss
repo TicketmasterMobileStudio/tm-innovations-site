@@ -17,7 +17,7 @@ body {
     .background {
       background-image: linear-gradient($primary-color, $primary-color-dark);
       background-position: center;
-      background-repeat: no-repeat;
+      background-repeat: repeat-x;
       background-size: cover;
       height: calc(100vh - #{$header-height});
       left: 0;
@@ -25,6 +25,11 @@ body {
       top: $header-height;
       width: 100vw;
       z-index: -1;
+
+      @include breakpoint(large up) {
+        &.image-interest-left { background-position: 50%; }
+        &.image-interest-right { background-position: 100%; }
+      }
 
       @include breakpoint(medium down) {
         @include vertical-offset('medium', 'height');
