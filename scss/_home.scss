@@ -64,6 +64,7 @@
   article {
     @include flex;
     background: no-repeat center;
+    background-color: $dark-gray;
     background-size: cover;
     color: $white;
     height: $panel-height;

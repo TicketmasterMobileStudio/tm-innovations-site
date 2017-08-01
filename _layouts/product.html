@@ -1,7 +1,11 @@
 ---
 layout: default
 ---
-<div class="background image-interest-{{ page.image-interest }}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})"></div>
+{% if page.detail-image %}
+  <div class="background" style="background-image:url({{ page.detail-image | prepend: 'assets/images/' | relative_url }})"></div>
+{% else %}
+  <div class="background image-interest-{{ page.image-interest }}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})"></div>
+{% endif %}
 <a href="{{ page.link }}" target="_blank">
   <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
 </a>
