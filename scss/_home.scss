@@ -153,7 +153,10 @@
 
     .content {
       .columns {
-        .medium-6 { @include grid-column-offset(3); }
+        &.medium-6 {
+          @include grid-column(12);
+          @include grid-column-offset(0);
+        }
       }
     }
   }
