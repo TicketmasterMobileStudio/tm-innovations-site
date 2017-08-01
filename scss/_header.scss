@@ -85,15 +85,13 @@
         position: absolute;
         right: 1rem + rem-calc(20) + 1.25rem;
         text-transform: uppercase;
-        transform: translateY(1.1em);
+        top: 1.1em;
 
         @include breakpoint(large up) {
-          // bottom: -1em;
           left: 0;
           margin: 0;
           position: absolute;
           right: 0;
-          // top: auto;
           top: rem-calc(22);
           transform: translateY(-50%);
         }
