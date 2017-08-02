@@ -22,7 +22,7 @@
     "pump": "^1.0.2"
   },
   "scripts": {
-    "start": "gulp watch",
+    "start": "gulp serve",
     "build": "gulp"
   },
   "author": "Darwin Campa <darwin.campa@ticketmaster.com>",
