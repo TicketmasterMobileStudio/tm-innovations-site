@@ -61,21 +61,6 @@ body {
         @include vertical-offset('medium');
       }
 
-      .inner-content {
-        li { margin-bottom: 1rem; }
-
-        p > .button {
-          margin: map-get($vertical-spacing, small) - 1rem 0;
-        }
-
-        > :last-child {
-          &,
-          .button {
-            margin-bottom: 0;
-          }
-        }
-      }
-
       // Override sizing - this could use some optimizing
       // Cap h1 size at medium breakpoint
       h1 {
@@ -89,10 +74,33 @@ body {
       h2 {
         font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
         line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
+        margin-top: map-get($vertical-spacing, small);
 
         @include breakpoint(medium up) {
           font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
           line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
+        }
+      }
+
+      .inner-content {
+        li {
+          margin-bottom: 1rem;
+
+          ol,
+          ul {
+            margin-top: 1rem;
+          }
+        }
+
+        p > .button {
+          margin: map-get($vertical-spacing, small) - 1rem 0 0;
+        }
+
+        > :last-child {
+          &,
+          .button {
+            margin-bottom: 0;
+          }
         }
       }
     }
