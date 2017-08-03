@@ -35,12 +35,24 @@ gulp.task('sass', (cb) => {
       sassLint.format(),
       sassLint.failOnError(),
       sourcemaps.init(),
-        sass({includePaths: ['bower_components/foundation-sites/scss']}).on('error', sass.logError),
+        sass({includePaths: [
+          'bower_components/foundation-sites/scss',
+          'bower_components/foundation-icon-fonts'
+        ]}).on('error', sass.logError),
         autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']}),
         cleanCSS(),
         rename({suffix: '.min'}),
       sourcemaps.write('.'),
       gulp.dest('assets/css')
+    ],
+    cb
+  );
+});
+
+gulp.task('copy-fonts', (cb) => {
+  pump([
+      gulp.src('bower_components/foundation-icon-fonts/*.{eot,svg,ttf,woff}'),
+      gulp.dest('assets/fonts/foundation-icons')
     ],
     cb
   );
@@ -103,7 +115,7 @@ gulp.task('jekyll', () => {
   jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll', 'html'], () => {
+gulp.task('serve', ['copy-fonts', 'sass', 'vendor-js', 'js', 'jekyll', 'html'], () => {
   browserSync.init({
     files: ['_site/**'],
     port: 4000,
@@ -117,7 +129,7 @@ gulp.task('serve', ['sass', 'vendor-js', 'js', 'jekyll', 'html'], () => {
   gulp.watch(['_site/**/*.html'], ['html']);
 });
 
-gulp.task('default', ['sass', 'vendor-js', 'js', 'html']);
+gulp.task('default', ['copy-fonts', 'sass', 'vendor-js', 'js', 'html']);
 
 // File where the favicon markups are stored
 var FAVICON_DATA_FILE = 'faviconData.json';

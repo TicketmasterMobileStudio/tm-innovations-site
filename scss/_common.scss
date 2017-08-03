@@ -93,3 +93,16 @@ html {
     }
   }
 }
+
+.feature {
+  @include clearfix;
+  padding-left: 2.5rem;
+
+  [class^='fi-'] {
+    color: $light-gray;
+    float: left;
+    font-size: 2rem;
+    line-height: 1;
+    margin: -.3rem 1rem 0 -2.5rem;
+  }
+}
