@@ -25,7 +25,7 @@ $(document).ready(function() {
   'use strict';
 
   // Inject SVGs so we can change colors
-  var $SVGImgs = $('.product-nav-icon, .dropdown-arrow');
+  var $SVGImgs = $('.product-nav-icon, .dropdown-arrow, .overlay img');
   var $responsiveSVGs = $SVGImgs.filter('.product-nav-icon');
 
   var injectCopy = function() {
