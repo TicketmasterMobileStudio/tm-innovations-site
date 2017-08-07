@@ -2,10 +2,11 @@
 title: Ticketmaster Assistant for Messenger
 short-title: Messenger
 link: https://www.messenger.com/t/101120273773705
+link-text: Say Hello
 date: May 29 2017
 
 image: messenger-bot-bg.jpg
-image-interest: left
+image-interest: right
 detail-overlay: messenger-bot-overlay.svg
 
 icon: ic-messenger-dark-filled.svg

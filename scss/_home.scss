@@ -143,6 +143,19 @@
     }
   }
 
+  // Ease transition to detail page
+  .product {
+    .content {
+      transition: .3s;
+    }
+
+    &.in-transition {
+      .content {
+        opacity: 0;
+      }
+    }
+  }
+
   // Use the vertical layout for medium-sized portrait screens
   @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
     .image-interest-left { background-position: 25%; }

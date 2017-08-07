@@ -72,27 +72,9 @@ $(document).ready(function() {
     }
   });
 
-  // Swap titles with short titles on large screens
-  function swapProductTitles() {
-    var $productTitles = $('span[data-title]', $menu);
-
-    if (Foundation.MediaQuery.atLeast('large')) {
-      $productTitles.each(function() {
-        $(this).text(this.dataset.shorttitle);
-      });
-    } else {
-      $productTitles.each(function() {
-        $(this).text(this.dataset.title);
-      });
-    }
-  }
-
-  $(window).on('changed.zf.mediaquery', swapProductTitles);
-
   // Add the dropdown on first load on large screens
   if (Foundation.MediaQuery.atLeast('large')) {
     var menu = new Foundation.DropdownMenu($menu, opts);
-    swapProductTitles();
   }
 
   // Don't close dropdown when unreleased product is clicked

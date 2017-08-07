@@ -1,8 +1,7 @@
 // calculate padding in order to show title and 1 line of text
 @mixin vertical-offset($size, $prop: margin-top) {
   #{$prop}: calc(100vh - #{
-    $topbar-height
-    + $headband-height
+    $header-height
     + map-get($vertical-spacing, $size)
     + rem-calc(map-deep-get($header-styles, $size, 'h1', 'font-size')) * map-deep-get($header-styles, $size, 'h1', 'line-height')
     + $header-margin-bottom
@@ -27,14 +26,7 @@ body {
       width: 100%;
       z-index: -1;
 
-      @include breakpoint(large up) {
-        &.image-interest-left { background-position: 50%; }
-        &.image-interest-right { background-position: 100%; }
-      }
-
-      @include breakpoint(medium down) {
-        @include vertical-offset('medium', 'height');
-
+      @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
         &.image-interest-left { background-position: 25%; }
         &.image-interest-right { background-position: 75%; }
       }
@@ -42,18 +34,9 @@ body {
       @include breakpoint(small only) {
         @include vertical-offset('small', 'height');
         position: absolute;
-      }
-    }
 
-    @keyframes fade-in-bubbles {
-      0% {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
+        &.image-interest-left { background-position: 25%; }
+        &.image-interest-right { background-position: 75%; }
       }
     }
 
@@ -70,7 +53,17 @@ body {
       position: relative; // fix z-index
 
       @include breakpoint(medium up) {
-        @include vertical-offset('medium');
+        @keyframes slide-up {
+          0% { margin-top: calc(100vh - #{$header-height}); }
+          100% { @include vertical-offset('medium'); }
+        }
+
+        animation-delay: .5s;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+        animation-name: slide-up;
+        animation-timing-function: cubic-bezier(.3, 1.4, .6, 1);
+        margin-top: calc(100vh - #{$header-height});
       }
 
       // Override sizing - this could use some optimizing
@@ -167,14 +160,32 @@ body {
     }
 
     // Manual styling and animating of overlay graphics
+    @keyframes fade-in-bubbles {
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .overlay {
       position: relative;
-      top: 40%;
+      text-align: center;
+      top: 50%;
       transform: translateY(-50%);
+
+      @include breakpoint(medium up) { top: 40%; }
 
       img { display: none; }
 
-      svg { max-width: 100%; }
+      svg {
+        display: inline-block;
+        max-width: 100%;
+      }
 
       svg [id='conversation-bubbles'] {
         > g > g {
