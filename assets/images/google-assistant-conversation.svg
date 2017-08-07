@@ -46,8 +46,8 @@
                     </g>
                     <g id="Bubble/User" transform="translate(248.000000, 128.000000)">
                         <g id="Group">
-                            <path d="M-4.27891684e-18,11.9951426 C-1.94246605e-17,5.37040825 5.36375529,0 11.9950348,0 L242.004965,0 C248.62964,0 254,5.36905718 254,11.9951426 L254,40.0048574 C254,46.6295917 248.636245,52 242.004965,52 L11.9950348,52 C5.37036002,52 7.49068931e-17,46.6309428 5.97580606e-17,40.0048574 L-4.27891684e-18,11.9951426 Z" id="BG" fill="#E8E8E8" opacity="0.800000012"></path>
-                            <text id="Text" font-family="TMSans-Regular, TM Sans" font-size="16" font-weight="normal" line-spacing="20" fill-opacity="0.54" fill="#000000">
+                            <path d="M0.5,11.9951426 L0.5,40.0048574 C0.5,46.3543261 5.64602803,51.5 11.9950348,51.5 L242.004965,51.5 C248.357778,51.5 253.5,46.3557749 253.5,40.0048574 L253.5,11.9951426 C253.5,5.64567388 248.353972,0.5 242.004965,0.5 L11.9950348,0.5 C5.64222235,0.5 0.5,5.64422508 0.5,11.9951426 Z" id="BG" stroke="#FFFFFF" opacity="0.800000012"></path>
+                            <text id="Text" font-family="TMSans-Regular, TM Sans" font-size="16" font-weight="normal" line-spacing="20" fill-opacity="0.7" fill="#FFFFFF">
                                 <tspan x="16.224" y="32">How about a musical on Sunday</tspan>
                             </text>
                         </g>
