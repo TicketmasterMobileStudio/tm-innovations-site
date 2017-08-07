@@ -24,7 +24,7 @@ body {
       left: 0;
       position: fixed;
       top: $header-height;
-      width: 100vw;
+      width: 100%;
       z-index: -1;
 
       @include breakpoint(large up) {
@@ -54,34 +54,6 @@ body {
       100% {
         opacity: 1;
         transform: translateY(0);
-      }
-    }
-
-    .overlay {
-      position: relative;
-      top: 40%;
-      transform: translateY(-50%);
-
-      img { display: none; }
-
-      svg { max-width: 100%; }
-
-      svg [id='conversation-bubbles'] {
-        > g > g {
-          animation-duration: .4s;
-          animation-fill-mode: forwards;
-          animation-name: fade-in-bubbles;
-          animation-timing-function: cubic-bezier(0, 0, .3, 1);
-          opacity: 0;
-        }
-
-        > g {
-          &:nth-child(1) > g { animation-delay: 1.5s; }
-          &:nth-child(2) > g { animation-delay: 2s; }
-          &:nth-child(3) > g { animation-delay: 4s; }
-          &:nth-child(4) > g { animation-delay: 5.5s; }
-          &:nth-child(5) > g { animation-delay: 6s; }
-        }
       }
     }
 
@@ -191,6 +163,40 @@ body {
         @include breakpoint(large up) {
           @include grid-column-size(6 of 10);
         }
+      }
+    }
+
+    // Manual styling and animating of overlay graphics
+    .overlay {
+      position: relative;
+      top: 40%;
+      transform: translateY(-50%);
+
+      img { display: none; }
+
+      svg { max-width: 100%; }
+
+      svg [id='conversation-bubbles'] {
+        > g > g {
+          animation-duration: .4s;
+          animation-fill-mode: forwards;
+          animation-name: fade-in-bubbles;
+          animation-timing-function: cubic-bezier(0, 0, .3, 1);
+          opacity: 0;
+        }
+      }
+
+      svg [id='google-assistant-conversation'] > g > g {
+        &:nth-child(1) > g { animation-delay: 1s; }
+        &:nth-child(2) > g { animation-delay: 1.5s; }
+        &:nth-child(3) > g { animation-delay: 3.5s; }
+        &:nth-child(4) > g { animation-delay: 5s; }
+        &:nth-child(5) > g { animation-delay: 6s; }
+      }
+
+      svg [id='messenger-bot-overlay'] > g > g {
+        &:nth-child(1) > g { animation-delay: 1s; }
+        &:nth-child(2) > g { animation-delay: 1.5s; }
       }
     }
   }
