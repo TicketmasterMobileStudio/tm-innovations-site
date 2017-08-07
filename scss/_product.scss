@@ -27,21 +27,16 @@ body {
       width: 100%;
       z-index: -1;
 
-      @include breakpoint(large up) {
-        &.image-interest-left { background-position: 50%; }
-        &.image-interest-right { background-position: 100%; }
-      }
-
-      @include breakpoint(medium down) {
-        @include vertical-offset('medium', 'height');
-
+      @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
         &.image-interest-left { background-position: 25%; }
         &.image-interest-right { background-position: 75%; }
       }
 
       @include breakpoint(small only) {
-        @include vertical-offset('small', 'height');
         position: absolute;
+
+        &.image-interest-left { background-position: 25%; }
+        &.image-interest-right { background-position: 75%; }
       }
     }
 
@@ -169,12 +164,16 @@ body {
     // Manual styling and animating of overlay graphics
     .overlay {
       position: relative;
-      top: 40%;
+      text-align: center;
+      top: 50%;
       transform: translateY(-50%);
 
       img { display: none; }
 
-      svg { max-width: 100%; }
+      svg {
+        display: inline-block;
+        max-width: 100%;
+      }
 
       svg [id='conversation-bubbles'] {
         > g > g {

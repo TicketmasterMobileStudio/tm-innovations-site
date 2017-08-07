@@ -9,6 +9,5 @@ $(document).ready(function() {
     var newOffset = parseFloat(currentMargin) - heightOffset;
 
     $content.css('margin-top', newOffset);
-    $bg.css('height', newOffset);
   }
 });
