@@ -64,6 +64,7 @@
   article {
     @include flex;
     background: no-repeat center;
+    background-color: $dark-gray;
     background-size: cover;
     color: $white;
     height: $panel-height;
@@ -88,6 +89,11 @@
         @each $size, $margin in $side-margins {
           @include breakpoint($size) { margin-left: -(rem-calc(44) + $margin); }
         }
+      }
+
+      .disabled {
+        cursor: not-allowed;
+        opacity: .5;
       }
 
       circle { stroke: currentColor; }
@@ -125,6 +131,11 @@
       &.secondary {
         @include button-style($white, auto, $primary-color);
       }
+
+      &.disabled {
+        background-color: $medium-gray;
+        opacity: .75;
+      }
     }
 
     @include breakpoint(medium up) {
@@ -143,7 +154,10 @@
 
     .content {
       .columns {
-        .medium-6 { @include grid-column-offset(3); }
+        &.medium-6 {
+          @include grid-column(12);
+          @include grid-column-offset(0);
+        }
       }
     }
   }

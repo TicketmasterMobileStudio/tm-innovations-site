@@ -2,6 +2,9 @@
 @import 'settings';
 @import 'foundation';
 
+$fi-path: '../fonts/foundation-icons';
+@import '_foundation-icons'; // sass-lint:disable-line clean-import-paths
+
 @include foundation-global-styles;
 @include foundation-grid;
 // @include foundation-flex-grid;

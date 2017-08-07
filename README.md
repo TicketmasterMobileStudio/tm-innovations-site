@@ -1,6 +1,6 @@
-# Ticketmaster Innovations website
+# Ticketmaster Innovation website
 
-This is a GitHub Pages repo for the Ticketmaster Innovations website.
+This is a GitHub Pages repo for the Ticketmaster Innovation website.
 
 ## Requirements
 
@@ -17,11 +17,11 @@ This is a GitHub Pages repo for the Ticketmaster Innovations website.
 
 ## Run the server locally
 
-1. Run `gulp serve`
+1. Run `npm start` (or `gulp serve`)
 
 ## Build for production and deploy
 
-1. Run `gulp`
+1. `npm run build` (or `gulp`)
 2. Commit any new files that appear in `assets/`
 3. Merge your changes to `master` (you were working on a dev branch, right?)
 

@@ -15,16 +15,22 @@ body {
 
     // TODO: Get rid of this presentational div, yuck
     .background {
+      background-color: $dark-gray;
       background-image: linear-gradient($primary-color, $primary-color-dark);
       background-position: center;
-      background-repeat: no-repeat;
+      background-repeat: repeat-x;
       background-size: cover;
       height: calc(100vh - #{$header-height});
       left: 0;
       position: fixed;
       top: $header-height;
-      width: 100vw;
+      width: 100%;
       z-index: -1;
+
+      @include breakpoint(large up) {
+        &.image-interest-left { background-position: 50%; }
+        &.image-interest-right { background-position: 100%; }
+      }
 
       @include breakpoint(medium down) {
         @include vertical-offset('medium', 'height');
@@ -36,6 +42,18 @@ body {
       @include breakpoint(small only) {
         @include vertical-offset('small', 'height');
         position: absolute;
+      }
+    }
+
+    @keyframes fade-in-bubbles {
+      0% {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -55,21 +73,6 @@ body {
         @include vertical-offset('medium');
       }
 
-      .inner-content {
-        li { margin-bottom: 1rem; }
-
-        p > .button {
-          margin: map-get($vertical-spacing, small) - 1rem 0;
-        }
-
-        > :last-child {
-          &,
-          .button {
-            margin-bottom: 0;
-          }
-        }
-      }
-
       // Override sizing - this could use some optimizing
       // Cap h1 size at medium breakpoint
       h1 {
@@ -83,10 +86,55 @@ body {
       h2 {
         font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
         line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
+        margin-top: map-get($vertical-spacing, small);
 
         @include breakpoint(medium up) {
           font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
           line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
+        }
+      }
+
+      .inner-content {
+        li {
+          margin-bottom: 1rem;
+
+          ol,
+          ul {
+            margin-top: 1rem;
+          }
+        }
+
+        ol { margin-left: 2.5rem; }
+
+        ol > li {
+          counter-increment: list;
+          list-style: none;
+          position: relative;
+
+          &::before {
+            border: 1px solid $medium-gray;
+            border-radius: (1.75rem / 2);
+            color: $medium-gray;
+            content: counter(list);
+            height: 1.75rem;
+            left: -2.5rem;
+            line-height: 1.75rem;
+            position: absolute;
+            text-align: center;
+            top: (-.25rem / 2);
+            width: 1.75rem;
+          }
+        }
+
+        p > .button {
+          margin: map-get($vertical-spacing, small) - 1rem 0 0;
+        }
+
+        > :last-child {
+          &,
+          .button {
+            margin-bottom: 0;
+          }
         }
       }
     }
@@ -115,6 +163,40 @@ body {
         @include breakpoint(large up) {
           @include grid-column-size(6 of 10);
         }
+      }
+    }
+
+    // Manual styling and animating of overlay graphics
+    .overlay {
+      position: relative;
+      top: 40%;
+      transform: translateY(-50%);
+
+      img { display: none; }
+
+      svg { max-width: 100%; }
+
+      svg [id='conversation-bubbles'] {
+        > g > g {
+          animation-duration: .4s;
+          animation-fill-mode: forwards;
+          animation-name: fade-in-bubbles;
+          animation-timing-function: cubic-bezier(0, 0, .3, 1);
+          opacity: 0;
+        }
+      }
+
+      svg [id='google-assistant-conversation'] > g > g {
+        &:nth-child(1) > g { animation-delay: 1s; }
+        &:nth-child(2) > g { animation-delay: 1.5s; }
+        &:nth-child(3) > g { animation-delay: 3.5s; }
+        &:nth-child(4) > g { animation-delay: 5s; }
+        &:nth-child(5) > g { animation-delay: 6s; }
+      }
+
+      svg [id='messenger-bot-overlay'] > g > g {
+        &:nth-child(1) > g { animation-delay: 1s; }
+        &:nth-child(2) > g { animation-delay: 1.5s; }
       }
     }
   }

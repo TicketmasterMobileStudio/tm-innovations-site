@@ -1,11 +1,12 @@
 ---
-title: Messenger Bot
+title: Ticketmaster Assistant for Messenger
 short-title: Messenger
 link: https://www.messenger.com/t/101120273773705
 date: May 29 2017
 
-image: messenger-bot-placeholder.jpg
-image-interest: right
+image: messenger-bot-bg.jpg
+image-interest: left
+detail-overlay: messenger-bot-overlay.svg
 
 icon: ic-messenger-dark-filled.svg
 nav-icon: ic-messenger-light.svg

@@ -1,7 +1,24 @@
 ---
 layout: default
 ---
-<div class="background image-interest-{{ page.image-interest }}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})"></div>
+{% if page.detail-overlay %}
+  {% capture overlay %}
+    <div class="row overlay">
+      {% if page.image-interest == 'right' %}
+        <div class="large-5 large-offset-2 columns">
+      {% else %}
+        <div class="medium-6 medium-offset-5 columns">
+      {% endif %}
+        <img src="{{ page.detail-overlay | prepend: 'assets/images/' | relative_url }}" alt="">
+      </div>
+    </div>
+  {% endcapture %}
+{% endif %}
+{% if page.detail-image %}
+  <div class="background" style="background-image:url({{ page.detail-image | prepend: 'assets/images/' | relative_url }})">{{ overlay }}</div>
+{% else %}
+  <div class="background{% unless page.detail-overlay %} image-interest-{{ page.image-interest }}{% endunless %}" style="background-image:url({{ page.image | prepend: 'assets/images/' | relative_url }})">{{ overlay }}</div>
+{% endif %}
 <a href="{{ page.link }}" target="_blank">
   <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
 </a>

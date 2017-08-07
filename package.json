@@ -1,7 +1,7 @@
 {
-  "name": "tm-innovations-site",
+  "name": "tm-innovation.github.io",
   "version": "1.0.0",
-  "description": "Ticketmaster Innovations website",
+  "description": "Ticketmaster Innovation website",
   "main": "gulpfile.js",
   "devDependencies": {
     "browser-sync": "^2.18.12",
@@ -22,7 +22,7 @@
     "pump": "^1.0.2"
   },
   "scripts": {
-    "start": "gulp watch",
+    "start": "gulp serve",
     "build": "gulp"
   },
   "author": "Darwin Campa <darwin.campa@ticketmaster.com>",

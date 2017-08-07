@@ -1,9 +1,9 @@
 {
-  "name": "tm-innovations-site",
+  "name": "tm-innovation.github.io",
   "authors": [
     "Darwin Campa <darwin.campa@ticketmaster.com>"
   ],
-  "description": "Ticketmaster Innovations website",
+  "description": "Ticketmaster Innovation website",
   "main": "index.html",
   "license": "UNLICENSED",
   "homepage": "",
@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "foundation-sites": "^6.3.1",
-    "svg-injector": "^1.1.3"
+    "svg-injector": "^1.1.3",
+    "foundation-icon-fonts": "*"
   }
 }
