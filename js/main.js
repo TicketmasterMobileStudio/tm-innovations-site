@@ -1,5 +1,3 @@
-$(document).foundation();
-
 // Get the viewport, used for height-related layouts
 // Adapted from https://gist.github.com/scottjehl/2051999
 // TODO: Figure out how to get viewport.max accurately on iOS Chrome
@@ -21,7 +19,14 @@ var viewport = (function() {
   };
 })();
 
-$(document).ready(function() {
+// Prevent small screen page refresh sticky bug
+$(window).on('sticky.zf.unstuckfrom:bottom', function(e) {
+  if (!Foundation.MediaQuery.atLeast('medium')) {
+    $(e.target).removeClass('is-anchored is-at-bottom').attr('style', '');
+  }
+});
+
+$(document).foundation().ready(function() {
   'use strict';
 
   // Inject SVGs so we can change colors
@@ -69,6 +74,7 @@ $(document).ready(function() {
 
     if ($btn.hasClass('open')) {
       $btn.removeClass('open');
+      $('html').removeClass('menu-open');
     }
   });
 
@@ -76,6 +82,15 @@ $(document).ready(function() {
   if (Foundation.MediaQuery.atLeast('large')) {
     var menu = new Foundation.DropdownMenu($menu, opts);
   }
+
+  // Add an html class based on menu state
+  $btn.parent().on('toggled.zf.responsiveToggle', function(e) {
+    $('html').toggleClass('menu-open', !$btn.hasClass('open'));
+
+    if (!$btn.hasClass('open') && !Foundation.MediaQuery.atLeast('medium')) {
+      $(window).scrollTop(0);
+    }
+  });
 
   // Don't close dropdown when unreleased product is clicked
   $('.unreleased > a').click(function(e) {
