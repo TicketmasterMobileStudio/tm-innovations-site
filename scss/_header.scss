@@ -1,6 +1,13 @@
 .nav-container {
+  height: $header-height;
   position: relative;
   z-index: 6; // above sticky things (they default to 5)
+}
+
+body {
+  .menu-open & {
+    @include breakpoint(small only) { overflow: hidden; }
+  }
 }
 
 .top-bar {
