@@ -42,10 +42,16 @@ body {
 
     .product-icon {
       position: fixed;
-      right: rem-calc(20);
-      top: $topbar-height + $headband-height + rem-calc(20);
+      top: $header-height + rem-calc(20);
 
       @include breakpoint(small only) { position: absolute; }
+
+      @each $size, $margin in $side-margins {
+        @include breakpoint($size) {
+          right: $margin;
+          top: $header-height + $margin;
+        }
+      }
     }
 
     .content {
