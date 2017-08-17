@@ -61,7 +61,7 @@ $medium-gray: #768692;
 $dark-gray: #414141;
 $black: #000;
 $white: #fff;
-$body-background: $white;
+$body-background: map-get($foundation-palette, primary);
 $body-font-color: $dark-gray;
 $body-font-family: 'TM Sans', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
