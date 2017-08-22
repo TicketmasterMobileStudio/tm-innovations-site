@@ -5,9 +5,9 @@ layout: default
   {% capture overlay %}
     <div class="row overlay">
       {% if page.image-interest == 'right' %}
-        <div class="large-6 columns">
+        <div class="large-6 large-offset-1 columns">
       {% else %}
-        <div class="large-6 large-offset-6 columns">
+        <div class="large-6 large-offset-5 columns">
       {% endif %}
         <img src="{{ page.detail-overlay | prepend: 'assets/images/' | relative_url }}" alt="">
       </div>
