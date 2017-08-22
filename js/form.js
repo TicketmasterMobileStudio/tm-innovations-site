@@ -29,13 +29,14 @@ $(document).ready(function() {
       contentType: 'application/json; charset=utf-8',
       error: function(err) {
           $btn.prop('disabled', false).val('Sign Up');
-          $msg.text(err);
+          $msg.text('Sorry, something went wrong. The server said: “' + err + '”').show();
         },
       success: function(data) {
           if (data.result !== 'success') {
-            $msg.text(data.result).show();
+            $msg.html(data.msg).show();
           } else {
             $('#success-modal').foundation('open');
+            $form[0].reset();
           }
           $btn.prop('disabled', false).val('Sign Up');
         }
