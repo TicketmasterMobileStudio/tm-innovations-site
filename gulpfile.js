@@ -82,7 +82,8 @@ gulp.task('html', (cb) => {
   pump([
       gulp.src('_site/**/*.html'),
       validator({
-        format: 'text'
+        format: 'text',
+        exitZeroAlways: true
       })
     ],
     cb
@@ -115,9 +116,9 @@ gulp.task('serve', ['copy-fonts', 'sass', 'vendor-js', 'js', 'jekyll', 'html'], 
     }
   });
 
-  gulp.watch(['scss/**/*.scss'], ['sass']);
-  gulp.watch(['js/*.js'], ['js']);
-  gulp.watch(['_site/**/*.html'], ['html']);
+  gulp.watch('scss/**/*.scss', ['sass']);
+  gulp.watch('js/*.js', ['js']);
+  gulp.watch('_site/**/*.html', ['html']);
 });
 
 gulp.task('default', ['copy-fonts', 'sass', 'vendor-js', 'js', 'html']);

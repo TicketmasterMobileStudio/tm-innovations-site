@@ -3,17 +3,22 @@ footer {
   color: $white;
   padding: rem-calc(36 20);
 
-  .footer-logo {
-    margin-bottom: rem-calc(16);
-    position: relative;
-    top: rem-calc(-1);
+  a {
+    color: $white;
+    transition: .2s opacity;
+
+    &:hover {
+      color: $white;
+      opacity: .5;
+    }
   }
 
-  p {
-    margin-bottom: rem-calc(24);
-  }
+  .footer-logo { margin-bottom: rem-calc(24); }
 
   .social-icons {
+    margin-bottom: rem-calc(24);
+    vertical-align: middle;
+
     li {
       margin-right: rem-calc(20);
 
@@ -23,22 +28,39 @@ footer {
     }
   }
 
-  @include breakpoint(medium up) {
-    padding: rem-calc(60 24);
+  .company-links {
+    margin-bottom: rem-calc(24);
+
+    &.menu > li {
+      margin-right: rem-calc(4);
+
+      &::after {
+        content: ' |';
+        margin-left: rem-calc(4);
+      }
+
+      &:last-child {
+        &::after { content: none; }
+      }
+
+      > a {
+        display: inline;
+        line-height: unitless-calc(24);
+      }
+    }
   }
 
-  @include breakpoint(large up) {
-    p,
-    .social-icons {
-      display: inline-block;
-    }
+  p { margin-bottom: 0; }
 
-    .social-icons { vertical-align: middle; }
+  @include breakpoint(medium up) {
+    padding: rem-calc(60 24);
 
-    .footer-logo,
-    p {
-      margin-bottom: 0;
+    .footer-logo {
       margin-right: rem-calc(30);
+      position: relative;
+      top: rem-calc(-1);
     }
+
+    .social-icons { display: inline-block; }
   }
 }
