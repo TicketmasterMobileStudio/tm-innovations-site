@@ -18,13 +18,24 @@ Here to help fans discover and search for live events around the world.
 
 ## Where do I get it?
 
-Ticketmaster Assistant is available on Facebook Messenger. Just search for “Ticketmaster Assistant” or [click here](https://m.me/ticketmasterassistant){:target='messenger'} to start chatting.
+<div class="media-object stack-for-small" markdown="1">
+<div class="media-object-section" markdown="1">
 
+Ticketmaster Assistant is available on Facebook Messenger. Just search for “Ticketmaster Assistant” or [click here](https://m.me/ticketmasterassistant){:target='messenger'} to start chatting.
+  
 {% include button.html url=page.link text=page.link-text target='messenger' %}
+
+</div>
+<div class="media-object-section" markdown="1">
+
+[![Messenger Code]({{ 'messenger_code_101120273773705.png' | prepend: 'assets/images/' | relative_url }}){:style="width:200px;"}](https://m.me/ticketmasterassistant){:target='messenger'}
+
+</div>
+</div>
 
 ## How do I use it?
 
-1. To get started, click [https://m.me/ticketmasterassistant](https://m.me/ticketmasterassistant){:target='messenger'} and start chatting with Ticketmaster Assistant. For example:
+1. To get started, [click here](https://m.me/ticketmasterassistant){:target='messenger'} and start chatting with Ticketmaster Assistant. For example:
   - “What’s happening tonight”
   - “Find comedy shows in London this weekend”
   - “Is Lady Gaga playing in New York this year”
