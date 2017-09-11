@@ -13,7 +13,6 @@ $(document).ready(function() {
 
   // Re-run some things when the size class changes
   $(window).on('changed.zf.mediaquery', function(e, newSize, oldSize) {
-
     initMoreArrow(newSize, oldSize);
     addDetailTransitions(newSize, oldSize);
   });
@@ -60,6 +59,11 @@ $(document).ready(function() {
 
             var navigate = setTimeout(function(dest) {
               location.href = dest;
+
+              // Clean up by removing the transition class
+              var removeTransition = setTimeout(function() {
+                $product.removeClass('in-transition');
+              }, 300);
             }, 300, e.target.href);
           });
         });
