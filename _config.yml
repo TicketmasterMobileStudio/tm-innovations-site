@@ -1,4 +1,8 @@
 title: Ticketmaster Innovation
+url: https://tm-innovation.github.io
+logo: /assets/images/tm-innovation-logo.png
+
+gtm-container-id: 'GTM-K4QMLG' # Google Tag Manager
 
 collections:
   products:
@@ -7,6 +11,10 @@ collections:
 permalink: pretty
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/innovation-open.jpg
   - scope:
       path: ""
       type: products
@@ -24,3 +32,6 @@ exclude:
   - gulpfile.js
   - package.json
   - README.md
+
+plugins:
+  - jekyll-seo-tag

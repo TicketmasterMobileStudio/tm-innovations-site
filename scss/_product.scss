@@ -186,7 +186,18 @@ body {
 
       @include breakpoint(medium up) { top: 40%; }
 
-      img { display: none; }
+      img {
+        &[src$='.svg'] { display: none; }
+
+        &:not([src$='.svg']) {
+          animation-delay: 1s;
+          animation-duration: .4s;
+          animation-fill-mode: forwards;
+          animation-name: fade-in-bubbles;
+          animation-timing-function: cubic-bezier(0, 0, .3, 1);
+          opacity: 0;
+        }
+      }
 
       svg {
         display: inline-block;

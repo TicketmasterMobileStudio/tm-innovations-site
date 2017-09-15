@@ -28,7 +28,7 @@ layout: default
 
 {% for product in products %}
   {% capture column-classes %}
-    {% case product.image-interest %}
+    {% case product.bg-image-interest %}
       {% when 'right' %}
         medium-6 large-4 large-offset-1 columns
       {% when 'left' %}
@@ -37,7 +37,7 @@ layout: default
         medium-10 medium-centered large-8 columns
     {% endcase %}
   {% endcapture %}
-  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.image-interest }}" style="background-image:url({{ product.image | prepend: 'assets/images/' | relative_url }})">
+  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.bg-image-interest }}" style="background-image:url({{ product.bg-image | prepend: 'assets/images/' | relative_url }})">
     <div class="product-icon" data-sticky-container>
       <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
         <div class="sticky-content">
