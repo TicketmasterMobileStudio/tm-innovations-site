@@ -1,7 +1,7 @@
 ---
 title: Ticketmaster for Google Assistant
 short-title: Assistant
-date: Jul 31 2017
+date: Sep 14 2017
 image: /assets/images/assistant-open.jpg
 
 bg-image: google-assistant-bg.jpg
