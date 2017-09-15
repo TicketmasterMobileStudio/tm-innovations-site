@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
+    {% if site.gtm-container-id %}{% include gtm.html %}{% endif %}
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
     <meta name="theme-color" content="#009cde">
   </head>
   <body class="{{ page.layout }}">
+    {% if site.gtm-container-id %}{% include gtm-noscript.html %}{% endif %}
     {% include header.html %}
     {{ content }}
     {% unless page.layout == 'product' %}{% include footer.html %}{% endunless %}
