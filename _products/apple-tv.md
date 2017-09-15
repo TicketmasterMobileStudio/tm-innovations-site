@@ -4,8 +4,8 @@ short-title: Apple TV
 link: https://www.apple.com/tv/
 date: May 28 2017
 
-image: apple-tv-placeholder.jpg
-image-interest: left
+bg-image: apple-tv-placeholder.jpg
+bg-image-interest: left
 
 icon: ic-appletv-dark-filled.svg
 nav-icon: ic-appletv-light.svg

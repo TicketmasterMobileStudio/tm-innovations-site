@@ -4,8 +4,8 @@ title: Early Access
 ---
 
 {% assign sorted_products = site.products | sort: 'date' | reverse %}
-{% assign image = sorted_products.first.image | prepend: 'assets/images/' | relative_url %}
-{% assign image-interest = sorted_products.first.image-interest %}
+{% assign image = sorted_products.first.bg-image | prepend: 'assets/images/' | relative_url %}
+{% assign image-interest = sorted_products.first.bg-image-interest %}
 
 <div class="eap image-interest-{{ image-interest }}" style="background-image:url({{ image }})">
   <div class="content text-center">

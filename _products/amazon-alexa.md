@@ -5,8 +5,8 @@ link: https://www.amazon.com/Amazon-Echo-And-Alexa-Devices/b?ie=UTF8&node=981804
 link-text: All The Covfefe
 date: May 30 2017
 
-image: amazon-alexa-placeholder.jpg
-image-interest: left
+bg-image: amazon-alexa-placeholder.jpg
+bg-image-interest: left
 
 icon: ic-alexa-dark-filled.svg
 nav-icon: ic-alexa-light.svg
