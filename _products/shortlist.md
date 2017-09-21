@@ -15,15 +15,15 @@ nav-icon-small: ic_shortlist_light_small.svg
 
 The easiest way to get tickets to the best concerts this week. 
 
-## Where do I get it?
+## Easy Filtering
 
-Have an iPhone? Download from the App Store. Have an Android device? We got you covered on the Play Store.
+Not really a fan of country or heavy metal? No problem. Filter down to just the types of music that you’re interested in.
 
-## How do I use it?
+## Discover Artists
 
-1. Open Shortlist
-2. Select a city or nearest location option
-3. Shortlist will score and sort to display the best upcoming concerts
-4. Filter concerts based on genre
-5. Once you select a concert you can switch between Best Quality and Lowest price tickets
-6. Press Buy Now to complete purchase
+Get the details on all of the artists performing at the show. Quickly jump to their Spotify page to sample their music or any of their social media accounts to learn a little bit more about who they are.
+
+## Get the Best Tickets For You
+
+Whether you’re treating yourself or sticking to a budget, Shortlist has you covered with a range of ticket options for most events. Buy Ticketmaster Verified tickets in seconds, without having to leave the app. 
+
