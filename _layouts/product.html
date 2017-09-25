@@ -33,13 +33,7 @@ layout: default
 {% else %}
   <div class="background image-interest-{{ page.bg-image-interest }}" style="background-image:url({{ page.bg-image | prepend: 'assets/images/' | relative_url }})">{{ overlay }}</div>
 {% endif %}
-{% if page.link %}
-  <a href="{{ page.link }}" target="_blank">
-    <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-  </a>
-{% else %}
-  <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-{% endif %}
+<img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
 <div class="row small-collapse large-uncollapse">
   <div class="medium-12 large-10 large-centered columns content">
     <article>

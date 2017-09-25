@@ -41,13 +41,7 @@ layout: default
     <div class="product-icon" data-sticky-container>
       <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
         <div class="sticky-content">
-          {% if product.link %}
-            <a{% unless product.unreleased %} href="{{ product.link }}" target="_blank"{% else %} class="disabled"{% endunless %}>
-              <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-            </a>
-          {% else %}
-            <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-          {% endif %}
+          <img src="{{ product.icon | prepend: 'assets/images/' | relative_url }}" alt="">
         </div>
       </div>
     </div>
