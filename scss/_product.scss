@@ -126,7 +126,11 @@ body {
         }
 
         p > .button {
-          margin: map-get($vertical-spacing, small) - 1rem 0 0;
+          margin-top: map-get($vertical-spacing, small) - 1rem;
+        }
+
+        .button-group > .button {
+          &:not(:last-child) { margin-right: $global-margin; }
         }
 
         > :last-child {
@@ -195,7 +199,15 @@ body {
           animation-fill-mode: forwards;
           animation-name: fade-in-bubbles;
           animation-timing-function: cubic-bezier(0, 0, .3, 1);
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
           opacity: 0;
+
+          &:nth-child(2) {
+            animation-delay: 1.5s;
+            margin-top: rem-calc(10);
+          }
         }
       }
 

@@ -89,11 +89,6 @@
         }
       }
 
-      .disabled {
-        cursor: not-allowed;
-        opacity: .5;
-      }
-
       circle { stroke: currentColor; }
       path { fill: currentColor; }
     }
@@ -121,6 +116,12 @@
 
     .button {
       margin: rem-calc(0 8 16);
+
+      &.store-button {
+        @include breakpoint(small only) {
+          display: none;
+        }
+      }
 
       &:last-child {
         margin-right: rem-calc(8);

@@ -1,11 +1,15 @@
 ---
 title: Ticketmaster Assistant for Facebook Messenger
 short-title: Messenger
+description: Ticketmaster’s chatbot on Facebook Messenger is here to help you discover and search for live events around the world.
 link: https://m.me/ticketmasterassistant
 link-text: Say Hello
 date: Jun 21 2017
-image: /assets/images/messenger-open.jpg
-
+image:
+  path: /assets/images/messenger-open.png
+  height: 630
+  width: 1200
+twitter-image: /assets/images/messenger-open-twitter-large.png
 
 bg-image: messenger-bot-bg.jpg
 bg-image-interest: right

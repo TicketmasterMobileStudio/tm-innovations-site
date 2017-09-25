@@ -1,1 +1,13 @@
-<a{% if include.url %} href="{{ include.url }}"{% endif %} class="button {{ include.class }}"{% if include.target %} target="{{ include.target }}"{% endif %}>{{ include.text }}</a>
+{%- if include.type == 'app-store' and include.url -%}
+  <a href="{{ include.url }}" target="_blank" class="button store-button app-store">
+    <img alt="Download on the App Store" src="{{ 'Download_on_the_App_Store_Badge_US-UK_135x40.svg' | prepend: 'assets/images/' | relative_url }}" />
+  </a>
+{%- elsif include.type == 'play-store' and include.url -%}
+  <a href="{{ include.url }}" target="_blank" class="button store-button play-store">
+    <img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" />
+  </a>
+{%- else -%}
+  <a{% if include.url %} href="{{ include.url }}"{% endif %} class="button {{ include.class }}"{% if include.target %} target="{{ include.target }}"{% endif %}>
+    {{ include.text }}
+  </a>
+{%- endif -%}

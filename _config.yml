@@ -1,4 +1,5 @@
 title: Ticketmaster Innovation
+description: Ticketmaster is changing what it means to be a ticketing platform. Check out the innovative products built by Ticketmaster.
 url: https://tm-innovation.github.io
 logo: /assets/images/tm-innovation-logo.png
 
@@ -14,7 +15,11 @@ defaults:
   - scope:
       path: ""
     values:
-      image: /assets/images/innovation-open.jpg
+      image:
+        path: /assets/images/innovation-open.png
+        height: 630
+        width: 1200
+      twitter-image: /assets/images/innovation-open-twitter-large.png
   - scope:
       path: ""
       type: products

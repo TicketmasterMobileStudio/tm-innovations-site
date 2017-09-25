@@ -9,14 +9,21 @@ layout: default
       {% else %}
         <div class="large-6 large-offset-5 columns">
       {% endif %}
-        {% assign ext = page.detail-overlay | split: '.' | last %}
-        {% if ext == 'png' %}
-          {% assign overlayImg1x = page.detail-overlay | prepend: 'assets/images/' | relative_url %}
-          {% assign overlayImg2x = overlayImg1x | replace: '.png', '@2x.png' %}
-          <img src="{{ overlayImg1x }}" srcset="{{ overlayImg2x }} 2x" alt="">
+        {% if page.detail-overlay.first %}
+          {% assign imgs = page.detail-overlay %}
         {% else %}
-          <img src="{{ page.detail-overlay | prepend: 'assets/images/' | relative_url }}" srcset="{{ page.detail-overlay | prepend: 'assets/images/' | relative_url }} 2x" alt="">
+          {% assign imgs = '' | split: '' | push: page.detail-overlay %}
         {% endif %}
+        {% for img in imgs %}
+          {% assign ext = img | split: '.' | last %}
+          {% if ext == 'png' %}
+            {% assign overlayImg1x = img | prepend: 'assets/images/' | relative_url %}
+            {% assign overlayImg2x = overlayImg1x | replace: '.png', '@2x.png' %}
+            <img src="{{ overlayImg1x }}" srcset="{{ overlayImg2x }} 2x" alt="">
+          {% else %}
+            <img src="{{ img | prepend: 'assets/images/' | relative_url }}" srcset="{{ img | prepend: 'assets/images/' | relative_url }} 2x" alt="">
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
   {% endcapture %}
@@ -26,9 +33,7 @@ layout: default
 {% else %}
   <div class="background image-interest-{{ page.bg-image-interest }}" style="background-image:url({{ page.bg-image | prepend: 'assets/images/' | relative_url }})">{{ overlay }}</div>
 {% endif %}
-<a href="{{ page.link }}" target="_blank">
-  <img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
-</a>
+<img class="product-icon" src="{{ page.icon | prepend: 'assets/images/' | relative_url }}" alt="">
 <div class="row small-collapse large-uncollapse">
   <div class="medium-12 large-10 large-centered columns content">
     <article>
