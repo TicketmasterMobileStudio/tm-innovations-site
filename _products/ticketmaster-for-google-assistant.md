@@ -1,8 +1,13 @@
 ---
 title: Ticketmaster for Google Assistant
 short-title: Assistant
+description: Ticketmaster’s action for Google Assistant is the fastest and most convenient way to search for and purchase 100% verified tickets for live entertainment.
 date: Sep 14 2017
-image: /assets/images/assistant-open.jpg
+image:
+  path: /assets/images/assistant-open.png
+  height: 630
+  width: 1200
+twitter-image: /assets/images/assistant-open-twitter-large.png
 
 bg-image: google-assistant-bg.jpg
 bg-image-interest: left

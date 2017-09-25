@@ -1,8 +1,13 @@
 ---
 title: Shortlist
 short-title: Shortlist
+description: Shortlist is the easiest way to get tickets to the best concerts this week. Shortlist uses an exclusive new system to show you the top concerts in your area that still have legit tickets.
 date: Sep 15 2017
-image: /assets/images/shortlist-open.jpg
+image:
+  path: /assets/images/shortlist-open.png
+  height: 630
+  width: 1200
+twitter-image: /assets/images/shortlist-open-twitter-large.png
 
 bg-image: productBackground-crop2.jpg
 bg-image-interest: right
@@ -29,4 +34,3 @@ Get the details on all of the artists performing at the show. Quickly jump to th
 ## Get the Best Tickets For You
 
 Whether you’re treating yourself or sticking to a budget, Shortlist has you covered with a range of ticket options for most events. Buy Ticketmaster Verified tickets in seconds, without having to leave the app. 
-
