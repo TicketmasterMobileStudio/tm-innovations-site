@@ -43,8 +43,8 @@ $side-margins: (
   text-transform: uppercase;
 
   @include breakpoint(medium up) {
-    padding-left: rem-calc(24);
-    padding-right: rem-calc(24);
+    padding-left: rem-calc(23);
+    padding-right: rem-calc(23);
   }
 }
 
