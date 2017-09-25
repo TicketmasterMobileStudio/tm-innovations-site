@@ -2,6 +2,9 @@
 title: Shortlist
 short-title: Shortlist
 description: Shortlist is the easiest way to get tickets to the best concerts this week. Shortlist uses an exclusive new system to show you the top concerts in your area that still have legit tickets.
+link:
+  - https://itunes.apple.com/us/app/shortlist-concert-tickets/id1288213918?ls=1&mt=8
+  - https://play.google.com/store/apps/details?id=com.tmsdurham.shortlist
 date: Sep 15 2017
 image:
   path: /assets/images/shortlist-open.png
@@ -20,6 +23,7 @@ nav-icon-small: ic_shortlist_light_small.svg
 
 The easiest way to get tickets to the best concerts this week.
 
+{:.button-group}
 {% include button.html type='app-store' url='https://itunes.apple.com/us/app/shortlist-concert-tickets/id1288213918?ls=1&mt=8' -%}
 {% include button.html type='play-store' url='https://play.google.com/store/apps/details?id=com.tmsdurham.shortlist' %}
 

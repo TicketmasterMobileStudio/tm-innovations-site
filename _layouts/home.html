@@ -55,8 +55,21 @@ layout: default
             {% else %}
               {% include button.html url=product.url text='Learn More' %}
               {% if product.link %}
-                {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
-                {% include button.html url=product.link text=link-text class='secondary' target='_blank' %}
+                {% if product.link.first %}
+                  {% assign links = product.link %}
+                {% else %}
+                  {% assign links = '' | split: '' | push: product.link %}
+                {% endif %}
+                {% for link in links %}
+                  {% if link contains 'itunes.apple.com' %}
+                    {% include button.html type='app-store' url=link %}
+                  {% elsif link contains 'play.google.com' %}
+                    {% include button.html type='play-store' url=link %}
+                  {% else %}
+                    {% capture link-text %}{{ product.link-text | default: 'Get It Now' }}{% endcapture %}
+                    {% include button.html url=link text=link-text class='secondary' target='_blank' %}
+                  {% endif %}
+                {% endfor %}
               {% endif %}
             {% endif %}
           </div>

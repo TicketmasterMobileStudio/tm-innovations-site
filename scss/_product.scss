@@ -126,7 +126,11 @@ body {
         }
 
         p > .button {
-          margin: map-get($vertical-spacing, small) - 1rem 0 0;
+          margin-top: map-get($vertical-spacing, small) - 1rem;
+        }
+
+        .button-group > .button {
+          &:not(:last-child) { margin-right: $global-margin; }
         }
 
         > :last-child {

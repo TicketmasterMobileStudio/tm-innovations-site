@@ -108,27 +108,33 @@ html {
   }
 }
 
-.app-store-btn {
-  display: inline-block;
-  margin: rem-calc(20) $global-margin 0 0;
-  vertical-align: middle;
+.store-button {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  transition: opacity .25s ease-out;
 
-  img { height: rem-calc(48); }
-}
+  &:hover {
+    background-color: transparent;
+    opacity: .5;
+  }
 
-.play-store-btn {
-  display: inline-block;
-  margin: rem-calc(20) $global-margin 0 0;
-  vertical-align: middle;
+  &:focus { background-color: transparent; }
 
-  img {
-    // Match the app store button
-    $included-padding: 41;
-    $total-height: 250;
-    $target-height: 48;
-    $scale: $target-height / ($total-height - $included-padding * 2);
-    height: rem-calc($total-height * $scale);
-    margin: rem-calc(-$included-padding * $scale);
-    max-width: none;
+  &.app-store {
+    img { height: rem-calc(48); }
+  }
+
+  &.play-store {
+    img {
+      // Match the app store button
+      $included-padding: 41;
+      $total-height: 250;
+      $target-height: 48;
+      $scale: $target-height / ($total-height - $included-padding * 2);
+      height: rem-calc($total-height * $scale);
+      margin: rem-calc(-$included-padding * $scale);
+      max-width: none;
+    }
   }
 }
