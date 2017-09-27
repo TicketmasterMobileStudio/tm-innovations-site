@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign products = site.products | sort: 'date' | reverse %}
+{% assign products = site.products | sort: 'order' %}
 <nav class="pager">
   <ul class="vertical menu simple text-center show-for-medium" data-magellan data-options="animationDuration:300;animationEasing:swing;barOffset:40;threshold:80;">
     <li><a href="#hero"><i></i></a></li>

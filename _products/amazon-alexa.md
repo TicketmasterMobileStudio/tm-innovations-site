@@ -1,7 +1,6 @@
 ---
 title: Amazon Alexa
 short-title: Alexa
-date: Sep 1 2017
 
 bg-image: amazon-alexa-placeholder.jpg
 bg-image-interest: left

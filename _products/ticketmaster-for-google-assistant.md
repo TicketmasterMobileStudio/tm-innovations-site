@@ -2,7 +2,7 @@
 title: Ticketmaster for Google Assistant
 short-title: Assistant
 description: Ticketmaster’s action for Google Assistant is the fastest and most convenient way to search for and purchase 100% verified tickets for live entertainment.
-date: Sep 14 2017
+order: 3
 image:
   path: /assets/images/assistant-open.png
   height: 630
@@ -35,7 +35,7 @@ The fastest and most convenient way to search for and purchase 100% verified tic
   - “Ask Ticketmaster about Hamilton tickets.”
   - “Ask Ticketmaster what hip-hop events are happening this weekend.”
 2. From there, chat with Ticketmaster about anything from attractions, to artists, to venues, to music genres, to sports, to sports teams, to event dates, and find the best available tickets to your favorite live events.
-3. Quickly purchase your tickets using your Ticketmaster account and the stored payment method associated with that account
+3. Quickly purchase your tickets using your Ticketmaster account and the stored payment method associated with that account.
 4. Enjoy the event!
 
 {% include button.html url='#' text='Download Press Packet' class='hollow' %}

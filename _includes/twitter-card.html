@@ -1,6 +1,6 @@
-{% if page.twitter-image and page.title and page.description %}
+{% if page.twitter-image and (page.title or site.title) and (page.description or site.description) %}
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ page.title }}">
-  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
   <meta name="twitter:image" content="{{ page.twitter-image | absolute_url }}">
 {% endif %}
