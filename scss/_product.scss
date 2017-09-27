@@ -9,235 +9,258 @@
   });
 }
 
-body {
-  &.product {
+.product-page {
+  // TODO: Get rid of this presentational div, yuck
+  .background {
+    background-color: $dark-gray;
+    background-image: linear-gradient($primary-color, $primary-color-dark);
+    background-position: center;
+    background-repeat: repeat-x;
+    background-size: cover;
+    height: calc(100vh - #{$header-height});
+    left: 0;
+    position: fixed;
+    top: $header-height;
+    width: 100%;
+    z-index: -1;
 
-    // TODO: Get rid of this presentational div, yuck
-    .background {
-      background-color: $dark-gray;
-      background-image: linear-gradient($primary-color, $primary-color-dark);
-      background-position: center;
-      background-repeat: repeat-x;
-      background-size: cover;
-      height: calc(100vh - #{$header-height});
+    @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
+      &.image-interest-left { background-position: 25%; }
+      &.image-interest-right { background-position: 75%; }
+    }
+
+    @include breakpoint(small only) {
+      @include vertical-offset('small', 'height');
+      position: absolute;
+
+      &.image-interest-left { background-position: 25%; }
+      &.image-interest-right { background-position: 75%; }
+    }
+
+    // Dark overlay for mobile
+    @keyframes fade-in-overlay {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    &::after {
+      background-color: transparentize($black, .5);
+      bottom: 0;
+      content: '';
       left: 0;
-      position: fixed;
-      top: $header-height;
-      width: 100%;
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
       z-index: -1;
 
-      @media screen and #{breakpoint(medium only)} and #{breakpoint(portrait)} {
-        &.image-interest-left { background-position: 25%; }
-        &.image-interest-right { background-position: 75%; }
-      }
-
-      @include breakpoint(small only) {
-        @include vertical-offset('small', 'height');
-        position: absolute;
-
-        &.image-interest-left { background-position: 25%; }
-        &.image-interest-right { background-position: 75%; }
-      }
-    }
-
-    .product-icon {
-      position: fixed;
-      top: $header-height + rem-calc(20);
-
-      @include breakpoint(small only) { position: absolute; }
-
-      @each $size, $margin in $side-margins {
-        @include breakpoint($size) {
-          right: $margin;
-          top: $header-height + $margin;
-        }
-      }
-    }
-
-    .content {
-      @include vertical-offset('small');
-      position: relative; // fix z-index
-
-      @include breakpoint(medium up) {
-        @keyframes slide-up {
-          0% { margin-top: calc(100vh - #{$header-height}); }
-          100% { @include vertical-offset('medium'); }
-        }
-
-        animation-delay: .5s;
+      @include breakpoint(medium down) {
+        animation-delay: 1s;
         animation-duration: .4s;
         animation-fill-mode: forwards;
-        animation-name: slide-up;
-        animation-timing-function: cubic-bezier(.3, 1.4, .6, 1);
-        margin-top: calc(100vh - #{$header-height});
+        animation-name: fade-in-overlay;
+        animation-timing-function: cubic-bezier(0, 0, .3, 1);
+      }
+    }
+  }
+
+  .product-icon {
+    position: fixed;
+    top: $header-height + rem-calc(20);
+
+    @include breakpoint(small only) { position: absolute; }
+
+    @each $size, $margin in $side-margins {
+      @include breakpoint($size) {
+        right: $margin;
+        top: $header-height + $margin;
+      }
+    }
+  }
+
+  .content {
+    @include vertical-offset('small');
+    position: relative; // fix z-index
+
+    @include breakpoint(medium up) {
+      @keyframes slide-up {
+        0% { margin-top: calc(100vh - #{$header-height}); }
+        100% { @include vertical-offset('medium'); }
       }
 
-      // Override sizing - this could use some optimizing
-      // Cap h1 size at medium breakpoint
-      h1 {
-        @include breakpoint(large up) {
-          font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
-          line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
-        }
-      }
+      animation-delay: .5s;
+      animation-duration: .4s;
+      animation-fill-mode: forwards;
+      animation-name: slide-up;
+      animation-timing-function: cubic-bezier(.3, 1.4, .6, 1);
+      margin-top: calc(100vh - #{$header-height});
+    }
 
-      // Bring h2 size up to match h1 and cap at medium breakpoint
-      h2 {
-        font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
-        line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
-        margin-top: map-get($vertical-spacing, small);
-
-        @include breakpoint(medium up) {
-          font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
-          line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
-        }
-      }
-
-      .inner-content {
-        li {
-          margin-bottom: 1rem;
-
-          ol,
-          ul {
-            margin-top: 1rem;
-          }
-        }
-
-        ol { margin-left: 2.5rem; }
-
-        ol > li {
-          counter-increment: list;
-          list-style: none;
-          position: relative;
-
-          &::before {
-            border: 1px solid $medium-gray;
-            border-radius: (1.75rem / 2);
-            color: $medium-gray;
-            content: counter(list);
-            height: 1.75rem;
-            left: -2.5rem;
-            line-height: 1.75rem;
-            position: absolute;
-            text-align: center;
-            top: (-.25rem / 2);
-            width: 1.75rem;
-          }
-        }
-
-        p > .button {
-          margin-top: map-get($vertical-spacing, small) - 1rem;
-        }
-
-        .button-group > .button {
-          &:not(:last-child) { margin-right: $global-margin; }
-        }
-
-        > :last-child {
-          &,
-          .button {
-            margin-bottom: 0;
-          }
-        }
+    // Override sizing - this could use some optimizing
+    // Cap h1 size at medium breakpoint
+    h1 {
+      @include breakpoint(large up) {
+        font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
+        line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
       }
     }
 
-    // TODO: Simplify this insanity
-    article {
-      background-color: $white;
+    // Bring h2 size up to match h1 and cap at medium breakpoint
+    h2 {
+      font-size: rem-calc(map-deep-get($header-styles, 'small', 'h1', 'font-size'));
+      line-height: map-deep-get($header-styles, 'small', 'h1', 'line-height');
+      margin-top: map-get($vertical-spacing, small);
 
-      .inner-content-container {
-        @include grid-row;
-
-        @include breakpoint(large up) {
-          @include grid-row(null, nest);
-        }
-      }
-
-      .inner-content {
-        padding: map-get($vertical-spacing, small) map-get($side-margins, small);
-
-        @include breakpoint(medium up) {
-          @include grid-column(8);
-          @include grid-column-position(center);
-          padding: map-get($vertical-spacing, medium) 0;
-        }
-
-        @include breakpoint(large up) {
-          @include grid-column-size(6 of 10);
-        }
+      @include breakpoint(medium up) {
+        font-size: rem-calc(map-deep-get($header-styles, 'medium', 'h1', 'font-size'));
+        line-height: map-deep-get($header-styles, 'medium', 'h1', 'line-height');
       }
     }
 
-    // Manual styling and animating of overlay graphics
-    @keyframes fade-in-bubbles {
-      0% {
+    .inner-content {
+      li {
+        margin-bottom: 1rem;
+
+        ol,
+        ul {
+          margin-top: 1rem;
+        }
+      }
+
+      ol { margin-left: 2.5rem; }
+
+      ol > li {
+        counter-increment: list;
+        list-style: none;
+        position: relative;
+
+        &::before {
+          border: 1px solid $medium-gray;
+          border-radius: (1.75rem / 2);
+          color: $medium-gray;
+          content: counter(list);
+          height: 1.75rem;
+          left: -2.5rem;
+          line-height: 1.75rem;
+          position: absolute;
+          text-align: center;
+          top: (-.25rem / 2);
+          width: 1.75rem;
+        }
+      }
+
+      p > .button {
+        margin-top: map-get($vertical-spacing, small) - 1rem;
+      }
+
+      .button-group > .button {
+        &:not(:last-child) { margin-right: $global-margin; }
+      }
+
+      > :last-child {
+        &,
+        .button {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  // TODO: Simplify this insanity
+  article {
+    background-color: $white;
+
+    .inner-content-container {
+      @include grid-row;
+
+      @include breakpoint(large up) {
+        @include grid-row(null, nest);
+      }
+    }
+
+    .inner-content {
+      padding: map-get($vertical-spacing, small) map-get($side-margins, small);
+
+      @include breakpoint(medium up) {
+        @include grid-column(8);
+        @include grid-column-position(center);
+        padding: map-get($vertical-spacing, medium) 0;
+      }
+
+      @include breakpoint(large up) {
+        @include grid-column-size(6 of 10);
+      }
+    }
+  }
+
+  // Manual styling and animating of overlay graphics
+  @keyframes fade-in-bubbles {
+    0% {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .overlay {
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include breakpoint(medium up) { top: 40%; }
+
+    img {
+      &[src$='.svg'] { display: none; }
+
+      &:not([src$='.svg']) {
+        animation-delay: 1s;
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+        animation-name: fade-in-bubbles;
+        animation-timing-function: cubic-bezier(0, 0, .3, 1);
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
         opacity: 0;
-        transform: translateY(16px);
-      }
 
-      100% {
-        opacity: 1;
-        transform: translateY(0);
+        &:nth-child(2) {
+          animation-delay: 1.5s;
+          margin-top: rem-calc(10);
+        }
       }
     }
 
-    .overlay {
-      position: relative;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
+    svg {
+      display: inline-block;
+      max-width: 100%;
+    }
 
-      @include breakpoint(medium up) { top: 40%; }
-
-      img {
-        &[src$='.svg'] { display: none; }
-
-        &:not([src$='.svg']) {
-          animation-delay: 1s;
-          animation-duration: .4s;
-          animation-fill-mode: forwards;
-          animation-name: fade-in-bubbles;
-          animation-timing-function: cubic-bezier(0, 0, .3, 1);
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          opacity: 0;
-
-          &:nth-child(2) {
-            animation-delay: 1.5s;
-            margin-top: rem-calc(10);
-          }
-        }
+    svg [id='conversation-bubbles'] {
+      > g > g {
+        animation-duration: .4s;
+        animation-fill-mode: forwards;
+        animation-name: fade-in-bubbles;
+        animation-timing-function: cubic-bezier(0, 0, .3, 1);
+        opacity: 0;
       }
+    }
 
-      svg {
-        display: inline-block;
-        max-width: 100%;
-      }
+    svg [id='google-assistant-conversation'] > g > g {
+      &:nth-child(1) > g { animation-delay: 1s; }
+      &:nth-child(2) > g { animation-delay: 1.5s; }
+      &:nth-child(3) > g { animation-delay: 3.5s; }
+      &:nth-child(4) > g { animation-delay: 5s; }
+      &:nth-child(5) > g { animation-delay: 6s; }
+    }
 
-      svg [id='conversation-bubbles'] {
-        > g > g {
-          animation-duration: .4s;
-          animation-fill-mode: forwards;
-          animation-name: fade-in-bubbles;
-          animation-timing-function: cubic-bezier(0, 0, .3, 1);
-          opacity: 0;
-        }
-      }
-
-      svg [id='google-assistant-conversation'] > g > g {
-        &:nth-child(1) > g { animation-delay: 1s; }
-        &:nth-child(2) > g { animation-delay: 1.5s; }
-        &:nth-child(3) > g { animation-delay: 3.5s; }
-        &:nth-child(4) > g { animation-delay: 5s; }
-        &:nth-child(5) > g { animation-delay: 6s; }
-      }
-
-      svg [id='messenger-bot-overlay'] > g > g {
-        &:nth-child(1) > g { animation-delay: 1s; }
-        &:nth-child(2) > g { animation-delay: 1.5s; }
-      }
+    svg [id='messenger-bot-overlay'] > g > g {
+      &:nth-child(1) > g { animation-delay: 1s; }
+      &:nth-child(2) > g { animation-delay: 1.5s; }
     }
   }
 }
