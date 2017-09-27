@@ -3,7 +3,7 @@ title: Score
 short-title: Score
 description: Score gets you genuine tickets to the best sporting events. Use Score to check out upcoming sporting events near you, see where your favorite teams are playing, and purchase confidently with Ticketmaster’s Verified Tickets guarantee.
 link: https://itunes.apple.com/us/app/score-sports-tickets/id1288664486?ls=1&mt=8
-date: Sep 25 2017
+order: 1
 image:
   path: /assets/images/score-open.png
   height: 630

@@ -5,7 +5,7 @@ description: Shortlist is the easiest way to get tickets to the best concerts th
 link:
   - https://itunes.apple.com/us/app/shortlist-concert-tickets/id1288213918?ls=1&mt=8
   - https://play.google.com/store/apps/details?id=com.tmsdurham.shortlist
-date: Sep 15 2017
+order: 2
 image:
   path: /assets/images/shortlist-open.png
   height: 630

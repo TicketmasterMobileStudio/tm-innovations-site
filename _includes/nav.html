@@ -1,6 +1,6 @@
 {% capture home_url %}{% link index.html %}{% endcapture %}
 {% capture eap_url %}{% link early-access.html %}{% endcapture %}
-{% assign products = site.products | sort: 'date' | reverse %}
+{% assign products = site.products | sort: 'order' %}
 
 <li class="is-dropdown-submenu-parent{% if page.url == home_url or page.layout == 'product' %} active{% endif %}">
   <a href="{{ home_url }}">

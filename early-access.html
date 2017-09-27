@@ -9,11 +9,11 @@ image:
 twitter-image: /assets/images/early-access-open-twitter-large.png
 ---
 
-{% assign sorted_products = site.products | sort: 'date' | reverse %}
+{% assign sorted_products = site.products | sort: 'order' %}
 {% assign image = sorted_products.first.bg-image | prepend: 'assets/images/' | relative_url %}
 {% assign image-interest = sorted_products.first.bg-image-interest %}
 
-<div class="eap image-interest-{{ image-interest }}" style="background-image:url({{ image }})">
+<div class="eap-page image-interest-{{ image-interest }}" style="background-image:url({{ image }})">
   <div class="content text-center">
     <form action="//ticketmaster.us15.list-manage.com/subscribe/post-json?u=5f3735e85240d46281743bbcc&amp;id=d86d9ccf21&amp;c=?" method="get" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" data-abide novalidate>
       <div class="row small-collapse medium-uncollapse">
