@@ -37,7 +37,9 @@ layout: default
         medium-10 medium-centered large-8 columns
     {% endcase %}
   {% endcapture %}
-  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.bg-image-interest }}" style="background-image:url({{ product.bg-image | prepend: 'assets/images/' | relative_url }})">
+  {% assign bgImg1x = product.bg-image | prepend: 'assets/images/' | relative_url %}
+  {% assign bgImg2x = bgImg1x | replace: '.jpg', '@2x.jpg' %}
+  <article id="product-{{ product.title | slugify }}" data-magellan-target="product-{{ product.title | slugify }}" class="product text-center image-interest-{{ product.bg-image-interest }}" data-interchange="[{{ bgImg1x }}, small], [{{ bgImg2x }}, xxlarge], [{{ bgImg2x }}, retina]">
     <div class="product-icon" data-sticky-container>
       <div class="sticky" data-sticky data-options="anchor:product-{{ product.title | slugify }};marginTop:5;stickyOn:medium">
         <div class="sticky-content">
