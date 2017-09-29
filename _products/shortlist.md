@@ -12,7 +12,7 @@ image:
   width: 1200
 twitter-image: /assets/images/shortlist-open-twitter-large.png
 
-bg-image: productBackground-crop2.jpg
+bg-image: shortlistBackground.jpg
 bg-image-interest: right
 detail-overlay: ui_element-small.png
 
