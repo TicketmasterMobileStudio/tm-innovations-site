@@ -33,3 +33,6 @@ For each game, get access to event details and links relevant to the experience 
 
 ## Purchase with Confidence
 With View From Seat, Score shows you exactly what your seats will be like. Know the quality of your seats, and purchase confidently with Ticketmaster’s Verified Tickets guarantee.
+
+{% assign download = 'Score.zip' | prepend: 'assets/downloads/' | relative_url %}
+{% include button.html url=download text='Download Press Packet' class='hollow' target='_blank' %}

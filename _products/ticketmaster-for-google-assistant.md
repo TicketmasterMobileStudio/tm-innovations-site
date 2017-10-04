@@ -38,4 +38,5 @@ The fastest and most convenient way to search for and purchase 100% verified tic
 3. Quickly purchase your tickets using your Ticketmaster account and the stored payment method associated with that account.
 4. Enjoy the event!
 
-{% include button.html url='#' text='Download Press Packet' class='hollow' %}
+{% assign download = 'Ticketmaster for Google Assistant.zip' | prepend: 'assets/downloads/' | relative_url %}
+{% include button.html url=download text='Download Press Packet' class='hollow' target='_blank' %}

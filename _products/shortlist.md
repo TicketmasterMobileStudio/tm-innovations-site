@@ -38,3 +38,6 @@ Get the details on all of the artists performing at the show. Quickly jump to th
 ## Get the Best Tickets For You
 
 Whether you’re treating yourself or sticking to a budget, Shortlist has you covered with a range of ticket options for most events. Buy Ticketmaster Verified tickets in seconds, without having to leave the app. 
+
+{% assign download = 'Shortlist.zip' | prepend: 'assets/downloads/' | relative_url %}
+{% include button.html url=download text='Download Press Packet' class='hollow' target='_blank' %}
