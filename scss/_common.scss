@@ -103,8 +103,8 @@ html {
     color: $light-gray;
     float: left;
     font-size: 2rem;
-    line-height: 1;
     height: 1em; // avoid Firefox subpixel issue
+    line-height: 1;
     margin: -.3rem 1rem 0 -2.5rem;
   }
 }

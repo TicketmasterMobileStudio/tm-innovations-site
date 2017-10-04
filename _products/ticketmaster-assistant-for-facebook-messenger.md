@@ -49,4 +49,5 @@ Ticketmaster Assistant is available on Facebook Messenger. Just search for “Ti
 3. Finally, when you are ready to buy tickets select “Get Tickets” and go through the purchase process.
 4. Enjoy the event!
 
-{% include button.html url='#' text='Download Press Packet' class='hollow' %}
+{% assign download = 'Ticketmaster Assistant for Facebook Messenger.zip' | prepend: 'assets/downloads/' | relative_url %}
+{% include button.html url=download text='Download Press Packet' class='hollow' target='_blank' %}
