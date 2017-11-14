@@ -14,7 +14,7 @@ twitter-image: /assets/images/shortlist-open-twitter-large.png
 
 bg-image: shortlistBackground.jpg
 bg-image-interest: right
-detail-overlay: ui_element-small.png
+detail-overlay: ui_element.png
 
 icon: ic_shortlist_dark_filled.svg
 nav-icon: ic_shortlist_light.svg
