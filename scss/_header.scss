@@ -187,7 +187,7 @@ body {
       }
 
       .menu {
-        @include menu-icons(top);
+        @include menu-icons();
         background: transparentize($white, .05);
         border: 0;
         left: 0;
