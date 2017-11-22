@@ -29,7 +29,7 @@ This is a GitHub Pages repo for the Ticketmaster Innovation website.
 
 * Slim down the dev stack (remove Bower?)
 
-## Development stack
+## Development stack 
 
 * **[Bundler](http://bundler.io/)** for the [GitHub Pages](https://github.com/github/pages-gem) gem and its dependencies (including [Jekyll](https://jekyllrb.com/))
 * **[npm](https://www.npmjs.com/)** for Gulp, Bower, and other dev tools
